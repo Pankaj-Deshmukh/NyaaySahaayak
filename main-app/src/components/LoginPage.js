@@ -1,6 +1,6 @@
 import React from 'react';
 import './LoginPage.css';
-import './script.js';
+import './script';
 
 export default function LoginPage() {
     return (
@@ -34,6 +34,7 @@ export default function LoginPage() {
                             <div className="social-icons">
                                 <a href="/" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
                                 <a href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
+                                <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
                             </div>
                             <span>or use your email password</span>
                             <input type="email" placeholder="Email"/>
@@ -57,9 +58,7 @@ export default function LoginPage() {
                         </div>
                     </div>
                 </div>
-                <script src="script.js"></script>
             </body>
         </div>
-    )
-    
+    )  
 }
