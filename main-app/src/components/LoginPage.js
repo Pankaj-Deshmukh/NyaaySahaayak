@@ -1,11 +1,17 @@
-import React from 'react';
-import './LoginPage.css';
-import './script';
+import React, { useState } from 'react';
+import './LoginPage.css'; // Import your CSS file
 
 export default function LoginPage() {
+    const [isSignUp, setIsSignUp] = useState(true);
+
+    const handleToggle = () => {
+        setIsSignUp(!isSignUp);
+    };
+
     return (
         <div>
             <head>
+                {/* Your head content goes here */}
                 <meta charset="UTF-8" />
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
@@ -13,7 +19,8 @@ export default function LoginPage() {
             </head>
 
             <body>
-                <div className="container" id="container">
+                <div className={`container ${isSignUp ? 'active' : ''}`} id="container">
+                    {/* Your form containers go here */}
                     <div className="form-container sign-up">
                         <form>
                             <h1>Create Account</h1>
@@ -22,9 +29,9 @@ export default function LoginPage() {
                                 <a href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
                             </div>
                             <span>or use your email for registeration</span>
-                            <input type="text" placeholder="Name"/>
-                            <input type="email" placeholder="Email"/>
-                            <input type="password" placeholder="Password"/>
+                            <input type="text" placeholder="Name" />
+                            <input type="email" placeholder="Email" />
+                            <input type="password" placeholder="Password" />
                             <button>Sign Up</button>
                         </form>
                     </div>
@@ -37,28 +44,31 @@ export default function LoginPage() {
                                 <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
                             </div>
                             <span>or use your email password</span>
-                            <input type="email" placeholder="Email"/>
-                            <input type="password" placeholder="Password"/>
+                            <input type="email" placeholder="Email" />
+                            <input type="password" placeholder="Password" />
                             <a href="/">Forget Your Password?</a>
                             <button>Log In</button>
                         </form>
                     </div>
                     <div className="toggle-container">
                         <div className="toggle">
-                            <div className="toggle-panel toggle-left">
+                            <div className={`toggle-panel toggle-left ${!isSignUp ? 'hidden' : ''}`}>
                                 <h1>Welcome Back!</h1>
-                                <p>Enter your personal details to use all of site features</p>
-                                <button className="hidden" id="login">Log In</button>
+                                <p>Enter your personal details to use all site features</p>
+                                <button onClick={handleToggle}>Log In</button>
                             </div>
-                            <div className="toggle-panel toggle-right">
+                            <div className={`toggle-panel toggle-right ${isSignUp ? 'hidden' : ''}`}>
                                 <h1>Hello, Friend!</h1>
-                                <p>Register with your personal details to use all of site features</p>
-                                <button className="hidden" id="register">Sign Up</button>
+                                <p>Register with your personal details to use all site features</p>
+                                <button onClick={handleToggle}>Sign Up</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                {/* Your script import goes here */}
+                <script src="script.js"></script>
             </body>
         </div>
-    )  
+    );
 }
