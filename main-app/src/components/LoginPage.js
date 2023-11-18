@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './LoginPage.css'; // Import your CSS file
 
 export default function LoginPage() {
-    const [isSignUp, setIsSignUp] = useState(true);
+    const [isSignUp, setIsSignUp] = useState(false);
 
     const handleToggle = () => {
         setIsSignUp(!isSignUp);
@@ -27,6 +27,7 @@ export default function LoginPage() {
                             <div className="social-icons">
                                 <a href="/" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
                                 <a href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
+                                <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
                             </div>
                             <span>or use your email for registeration</span>
                             <input type="text" placeholder="Name" />
@@ -55,12 +56,12 @@ export default function LoginPage() {
                             <div className={`toggle-panel toggle-left ${!isSignUp ? 'hidden' : ''}`}>
                                 <h1>Welcome Back!</h1>
                                 <p>Enter your personal details to use all site features</p>
-                                <button onClick={handleToggle}>Log In</button>
+                                <button onClick={handleToggle} style={{backgroundColor: "transparent",borderColor: "#fff"}}>Log In</button>
                             </div>
                             <div className={`toggle-panel toggle-right ${isSignUp ? 'hidden' : ''}`}>
                                 <h1>Hello, Friend!</h1>
                                 <p>Register with your personal details to use all site features</p>
-                                <button onClick={handleToggle}>Sign Up</button>
+                                <button onClick={handleToggle} style={{backgroundColor: "transparent",borderColor: "#fff"}}>Sign Up</button>
                             </div>
                         </div>
                     </div>
