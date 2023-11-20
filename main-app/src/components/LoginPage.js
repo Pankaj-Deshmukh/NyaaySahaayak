@@ -30,7 +30,7 @@ export default function LoginPage() {
                                 <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
                             </div>
                             <span>or use your email for registeration</span>
-                            <input type="text" placeholder="Name" />
+                            <input type="text" name="name" placeholder="Name" />
                             <input type="email" placeholder="Email" />
                             <input type="password" placeholder="Password" />
                             <button>Sign Up</button>
