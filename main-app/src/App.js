@@ -7,8 +7,10 @@ function App() {
       <>
          <Path>
             <Routes>
+
                <Route exact path='/home' element={<Home/>} />
                <Route exact path='/login' element={<LoginPage />} />
+               
             </Routes>
          </Path>
       </>
