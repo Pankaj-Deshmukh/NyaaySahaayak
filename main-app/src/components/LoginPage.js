@@ -34,7 +34,7 @@ export default function LoginPage() {
                             <input type="text" name="name" placeholder="Name" />
                             <input type="email" placeholder="Email" />
                             <input type="password" placeholder="Password" />
-                            <button onClick={handleToggle}>Sign Up</button>
+                            <a href='/'><button>Sign Up</button></a>
                         </form>
                     </div>
                     <div className="form-container sign-in">

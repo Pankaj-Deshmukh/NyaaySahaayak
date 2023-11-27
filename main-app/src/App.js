@@ -1,18 +1,16 @@
 import LoginPage from './components/LoginPage.js';
 import Home from './components/Home.js';
-import { BrowserRouter as Path, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Main, Route, Routes } from 'react-router-dom'
 
 function App() {
    return (
       <>
-         <Path>
+         <Main>
             <Routes>
-
+               <Route exact path='/' element={<LoginPage />} />
                <Route exact path='/home' element={<Home/>} />
-               <Route exact path='/login' element={<LoginPage />} />
-               
             </Routes>
-         </Path>
+         </Main>
       </>
    );
 }

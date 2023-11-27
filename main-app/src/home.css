@@ -55,11 +55,10 @@ p{
 
 .ProfileButton{
     background-color: white;
-    width:45px;
+    width:40px;
     height:40px;
-    border-radius:17px;
-    border-style:solid;
-    border-color:black;
+    border-radius:15px;
+    border: 2px solid black;
     position:absolute;
     top:20px;
     right:10px;
