@@ -15,6 +15,7 @@ body, html{
     background-color: purple;
     align-items:center;
     justify-content: space-around;
+    border-right: 1px solid black;
 }
 .items{
     background-color: antiquewhite;
@@ -78,21 +79,55 @@ p{
 }
 .BarColumn{
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     background-color: pink;
     height:120px;
+    border-top: 1px solid black;
 }
 .SearchBar{
     width:100%;
-    margin:0 100px 0 100px;
+    /* margin:0 100px 0 100px; */
     height:45px;
-    border-radius: 22.5px;
+    min-width: 5rem;
+    max-width: 40rem;
+    border-top-left-radius: 22.5px;
+    border-bottom-left-radius: 22.5px;
     border:1px solid black;
     padding:0 17px 0 17px;
     font-size: 20px;
-
+    outline: none;
 }
-.SearchBar::placeholder{
-    text-align:center;
+.SearchButton{
+    height: 45px;
+    width: 70px;
+    margin-left: -1px;
+    border: 1px solid black;
+    border-top-right-radius: 22px;
+    border-bottom-right-radius: 22px;
+    background-color: #fff;
+}
+.SearchButton:hover{
+    cursor: pointer;
+    .SearchBar-img{
+        width: 42px;
+    }
+}
+.SearchButton:active{
+    .SearchBar-img{
+    width: 38px;   
+    }
+}
+.SearchBar-img{
+    width: 40px;
+    transform:translateX(-3px);
+    background-color: white;
+}
+.voice-search{
+    height: 45px;
+    width: 45px;
+    border: 1px solid rgb(66, 66, 66);
+    border-radius: 22.5px;
+    margin-left: 10px;
 }
