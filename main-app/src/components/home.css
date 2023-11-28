@@ -13,7 +13,6 @@ body, html{
     display:flex;
     flex-direction: column;
     background-color: purple;
-    text-align: center;
     align-items:center;
     justify-content: space-around;
 }
@@ -25,10 +24,17 @@ body, html{
     justify-content: center;
     align-items: center;
 }
+.hystory-content{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 #HistoryHeading{
-    height:25rem;
-    font-size: 25px;
-    padding-top:20px;
+    font-size: 20px;
+    text-align: center;
+}
+.heading{
+    margin:0;
 }
 .SearchBox{
     background-color: rgb(127, 255, 165);
@@ -58,7 +64,7 @@ p{
     width:40px;
     height:40px;
     border-radius:15px;
-    border: 2px solid black;
+    border: 2px solid rgb(131, 131, 131);
     position:absolute;
     top:20px;
     right:10px;
