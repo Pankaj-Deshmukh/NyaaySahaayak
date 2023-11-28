@@ -61,16 +61,13 @@ p{
 
 .ProfileButton{
     background-color: white;
-    width:45px;
+    width:40px;
     height:40px;
-<<<<<<<< HEAD:Frontend/src/components/home.css
     border-radius:15px;
     border: 2px solid rgb(131, 131, 131);
-========
-    border-radius:17px;
+    border-radius:13px;
     border-style:solid;
     border-color:black;
->>>>>>>> a562c4aa02d4ba6fa855973953ae542309420cf8:Frontend/src/home.css
     position:absolute;
     top:20px;
     right:10px;
