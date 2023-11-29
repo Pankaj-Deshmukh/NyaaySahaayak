@@ -7,21 +7,26 @@ body, html{
     height: 100%;
     margin: 0;
 }
+p{
+    margin-top:0;
+    margin-bottom:0;
+}
 .History{
-    background-color: aqua;
+    background-color: rgb(233, 233, 233);
     width:250px;
     display:flex;
     flex-direction: column;
-    background-color: purple;
     align-items:center;
     justify-content: space-around;
-    border-right: 1px solid black;
+    border-right: 1px solid rgb(200, 200, 200);
 }
 .items{
-    background-color: antiquewhite;
+    background-color:white;
     width:90%;
     height:100%;
     margin: 5px 0 5px 0;
+    padding-left: 10px;
+    border-radius: 10px;
     justify-content: center;
     align-items: center;
 }
@@ -35,60 +40,61 @@ body, html{
     text-align: center;
 }
 .heading{
-    margin:0;
+    margin:10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.SearchBox{
-    background-color: rgb(127, 255, 165);
+.Main-body{
     width:100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-rows: 1fr max-content;
 }
-.ContentBox{
-    height: 100%;
-    width:100%;
-}
-p{
-    margin-top:0;
-    margin-bottom:0;
-}
-.FullContent{
-    display: inline-block;
-    padding-left:60px;
-}
-.HeadMainContent{
-    margin: 0 0 25px 0;
-    padding-top:20px;
-}
-
 .ProfileButton{
     background-color: white;
     width:40px;
     height:40px;
     border-radius:15px;
-    border: 2px solid rgb(131, 131, 131);
+    border: 2px solid rgb(190, 190, 190);
     border-radius:13px;
-    border-style:solid;
-    border-color:black;
-    position:absolute;
+    position: absolute;
     top:20px;
     right:10px;
+    z-index: 10;
 }
 .ProfileButton:active{
     border:none;
     /* can add the new showing profile here maybe... */
 }
-.BarColumn{
+.Header{
+    background-color: rgba(200, 200, 200, 0.568);
+    position: absolute;
+    width:80.4%;
+}
+.Middle{
+    height: 100%;
+    width: 100%;
+    background-color: white;
+    background-image: url(Images/scale-34770.png);
+    background-size: 40%;
+    background-repeat: no-repeat;
+    background-position-x: center;
+    background-position-y: center;
+}
+.body-logo{
+    height: 100px;
+}
+.Footer{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: pink;
-    height:120px;
+    background-color: whitesmoke;
+    height:80px;
     border-top: 1px solid black;
 }
 .SearchBar{
     width:100%;
-    /* margin:0 100px 0 100px; */
     height:45px;
     min-width: 5rem;
     max-width: 40rem;
@@ -98,6 +104,7 @@ p{
     padding:0 17px 0 17px;
     font-size: 20px;
     outline: none;
+    background-color: white;
 }
 .SearchButton{
     height: 45px;
@@ -127,7 +134,8 @@ p{
 .voice-search{
     height: 45px;
     width: 45px;
-    border: 1px solid rgb(66, 66, 66);
+    border: 1px solid rgb(200, 200, 200);
+    background-color: #fff;
     border-radius: 22.5px;
     margin-left: 10px;
 }
