@@ -67,7 +67,7 @@ p{
     /* can add the new showing profile here maybe... */
 }
 .Header{
-    background-color: rgba(200, 200, 200, 0.568);
+    background-color: rgba(200, 200, 200, 0.716);
     position: absolute;
     width:80.4%;
 }
@@ -83,6 +83,18 @@ p{
 }
 .body-logo{
     height: 100px;
+}
+.scroll-body{
+    width: 100%;
+    height: 514px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    overflow-y:scroll;
+    background-color: rgb(255, 255, 255);
+}
+.content-box{
+    width: 70%;
 }
 .Footer{
     display: flex;
