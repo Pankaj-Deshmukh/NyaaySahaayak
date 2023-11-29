@@ -11,6 +11,9 @@ p{
     margin-top:0;
     margin-bottom:0;
 }
+h1,h3{
+    margin:20px 0;
+}
 .History{
     background-color: rgb(233, 233, 233);
     width:250px;
@@ -70,12 +73,13 @@ p{
     background-color: rgba(200, 200, 200, 0.716);
     position: absolute;
     width:80.4%;
+    padding-left: 20px;
 }
 .Middle{
     height: 100%;
     width: 100%;
     background-color: white;
-    background-image: url(Images/scale-34770.png);
+    background-image: url(/src/components/Images/scale-34770.png);
     background-size: 40%;
     background-repeat: no-repeat;
     background-position-x: center;

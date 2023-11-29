@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './components/css/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -81,9 +82,7 @@ export default function LoginPage() {
                             <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
                             <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
                             <input type="password" name="password" placeholder="Password" onChange={handleInputChange} />
-                            <button type="button" onClick={handleSignup}>
-                                Sign Up
-                            </button>
+                            <a href="/"><button type="button" onClick={handleSignup}>Sign Up</button></a>
                         </form>
                     </div>
                     <div className="form-container sign-in">
@@ -98,7 +97,7 @@ export default function LoginPage() {
                             <input type="email" placeholder="Email" />
                             <input type="password" placeholder="Password" />
                             <a href="/">Forget Your Password?</a>
-                            <button>Log In</button>
+                            <Link to="/home"><button>Log In</button></Link>
                         </form>
                     </div>
                     <div className="toggle-container">
