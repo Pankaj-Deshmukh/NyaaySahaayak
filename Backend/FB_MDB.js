@@ -5,11 +5,11 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const app = express();
 const PORT = process.env.PORT || 3001;
-mongoose.connect('mongodb://localhost:27017/your-databaseee', {
+mongoose.connect('mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/NHK_users', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-const User = mongoose.model('Facebook_Data', {
+const User = mongoose.model('facebook_datas', {
   facebookId: String,
   displayName: String,
 });
