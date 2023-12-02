@@ -4,8 +4,8 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const app = express();
-const PORT = process.env.PORT || 3000;
-mongoose.connect('mongodb+srv://NHKusers:NHKusers@nhkusers.okqyjty.mongodb.net/NHK_users', {
+const PORT = process.env.PORT || 3001;
+mongoose.connect('mongodb://localhost:27017/your-databaseee', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -17,7 +17,7 @@ const User = mongoose.model('Facebook_Data', {
 passport.use(new FacebookStrategy({
   clientID: '259611373759652',
   clientSecret: 'f91df7a5e17de1712404c9e0421439cd',
-  callbackURL: 'http://localhost:3000/auth/facebook/callback',
+  callbackURL: 'http://localhost:3001/auth/facebook/callback',
 }, (accessToken, refreshToken, profile, done) => { 
   const newUser = new User({
     facebookId: profile.id,
@@ -84,9 +84,9 @@ app.get('/auth-check', (req, res) => {
 // Display user info on the home page
 app.get('/', (req, res) => {
   if (req.isAuthenticated()) {
-    res.send(`Hello, ${req.user.displayName}!`);
-  } else {
-    res.send('<a href="/auth/facebook">Login with Facebook</a>');
+    res.redirect('http://localhost:3000/home');
+   }else {
+    // app.get('/auth/facebook', passport.authenticate('facebook', { authType: 'rerequest' }));
   }
 }
 )

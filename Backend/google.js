@@ -6,12 +6,12 @@ const cors = require('cors');
 require('./google_passport');
 // const http = require('http');
 const app = express();
-const corsOptions = {
-  origin: 'http://localhost:3000',
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(session({
   secret: 'your-secret-key',
   resave: false,
