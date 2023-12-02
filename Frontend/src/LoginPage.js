@@ -4,6 +4,9 @@ import './components/css/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 
 
+const changeloc4k = () => {
+  window.location.href = "http://localhost:4000/auth"; // Redirect to Google authentication
+};
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -74,9 +77,9 @@ export default function LoginPage() {
                         <form onSubmit={(e) => e.preventDefault()}>
                             <h1>Create Account</h1>
                             <div className="social-icons">
-                                <a href="/" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
-                                <a href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
-                                <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
+                                <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
+                                <Link href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></Link>
+                                <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
                             <span>or use your email for registeration</span>
                             <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
@@ -89,9 +92,9 @@ export default function LoginPage() {
                         <form>
                             <h1>Log In</h1>
                             <div className="social-icons">
-                                <a href="/" className="icon"><i className="fa-brands fa-google-plus-g"></i></a>
-                                <a href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></a>
-                                <a href="/" className="icon"><i className="fa-solid fa-phone"></i></a>
+                                <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
+                                <Link href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></Link>
+                                <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
                             <span>or use your email password</span>
                             <input type="email" placeholder="Email" />
