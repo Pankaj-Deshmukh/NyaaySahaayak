@@ -14,6 +14,7 @@ export default function Home() {
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
         </head>
         <body>
+          {/* HELLO */}
           <div className="Body">
             <div className="History">
               <div className="items"><h3 id="HistoryHeading">HISTORY</h3></div>
