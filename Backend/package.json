@@ -147,7 +147,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon maha"
+    "start": "nodemon FB_MDB"
   },
   "author": "",
   "license": "ISC"

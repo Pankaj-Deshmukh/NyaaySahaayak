@@ -8,6 +8,10 @@ const changeloc4k = () => {
   window.location.href = "http://localhost:4000/auth"; // Redirect to Google authentication
 };
 
+const FB = () => {
+  window.location.href = "http://localhost:3001/auth/facebook"
+}
+
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
   const [signupData, setSignupData] = useState({
@@ -78,7 +82,7 @@ export default function LoginPage() {
                             <h1>Create Account</h1>
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
-                                <Link href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></Link>
+                                <Link href="/" className="icon" onClick={FB}><i className="fa-brands fa-facebook-f"></i></Link>
                                 <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
                             <span>or use your email for registeration</span>
