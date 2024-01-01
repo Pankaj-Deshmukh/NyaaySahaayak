@@ -52,7 +52,7 @@ h1,h3{
 .Main-body{
     width:100%;
     display: grid;
-    grid-template-rows: 1fr max-content;
+    grid-template-rows: max-content 1fr max-content;
 }
 .ProfileButton{
     background-color: white;
@@ -72,8 +72,10 @@ h1,h3{
 }
 .Header{
     background-color: rgba(200, 200, 200, 0.716);
-    position: absolute;
-    width:80.4%;
+    height: 80px;
+    display: flex;
+    flex: 1;
+    max-width: 1200px;
     padding-left: 20px;
 }
 .Middle{
@@ -91,10 +93,9 @@ h1,h3{
 }
 .scroll-body{
     width: 100%;
-    height: 514px;
+    height: 550px;
     display: flex;
     justify-content: center;
-    overflow: hidden;
     overflow-y:scroll;
     background-color: rgb(255, 255, 255);
 }
@@ -143,11 +144,7 @@ h1,h3{
     width: 38px;   
     }
 }
-.SearchBar-img{
-    width: 40px;
-    transform:translateX(-3px);
-    background-color: white;
-}
+
 .voice-search{
     height: 45px;
     width: 45px;
