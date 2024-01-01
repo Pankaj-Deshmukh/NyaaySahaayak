@@ -3,14 +3,13 @@ import { Link } from 'react-router-dom';
 import './components/css/LoginPage.css';
 import { useNavigate } from 'react-router-dom';
 
-
 const changeloc4k = () => {
   window.location.href = "http://localhost:4000/auth"; // Redirect to Google authentication
 };
 
 const FB = () => {
-  window.location.href = "http://localhost:3001/auth/facebook"
-}
+  window.location.href = "http://localhost:3001/auth/facebook";
+};
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -19,6 +18,11 @@ export default function LoginPage() {
     email: '',
     password: '',
   });
+  const [loginData, setLoginData] = useState({
+    email: '',
+    password: '',
+  });
+
   const navigate = useNavigate();
 
   const handleToggle = () => {
@@ -26,7 +30,6 @@ export default function LoginPage() {
   };
 
   const handleSignup = async () => {
-    console.log('Signup data : ',signupData)
     try {
       const response = await fetch('http://localhost:3001/signup', {
         method: 'POST',
@@ -35,21 +38,17 @@ export default function LoginPage() {
         },
         body: JSON.stringify(signupData),
       });
-  
+
       const data = await response.json();
-  
+
       if (response.ok) {
         console.log(data.message);
         navigate('/login');
         prompt("User registered successfully");
       } else {
-        // Check for the specific error message
         if (data.message === 'Email is already registered') {
-          // Handle the case where the email is already registered
           console.error('Email is already registered. Please use a different email.');
-          // You might display an error message to the user or take other actions
         } else {
-          // Handle other error cases
           console.error('Error during signup:', data.message);
         }
       }
@@ -57,11 +56,38 @@ export default function LoginPage() {
       console.error('Error during signup:', error);
     }
   };
-  
+
+  const handleLogin = async () => {
+    try {
+      const response = await fetch('http://localhost:3001/logg', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(loginData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.isValid) {
+        console.log(data.user);
+        // Perform actions after successful login, e.g., set user in state, redirect, etc.
+        navigate('/home');
+      } else {
+        console.error('Error during login:', data.message);
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
+    }
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setSignupData((prevData) => ({ ...prevData, [name]: value }));
+    if (isSignUp) {
+      setSignupData((prevData) => ({ ...prevData, [name]: value }));
+    } else {
+      setLoginData((prevData) => ({ ...prevData, [name]: value }));
+    }
   };
 
     return (
@@ -89,11 +115,11 @@ export default function LoginPage() {
                             <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
                             <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
                             <input type="password" name="password" placeholder="Password" onChange={handleInputChange} />
-                            <a href="/"><button type="button" onClick={handleSignup}>Sign Up</button></a>
+                            <a href='/'><button type="button" onClick={handleSignup}>Sign Up</button></a>
                         </form>
                     </div>
                     <div className="form-container sign-in">
-                        <form>
+                        <form onSubmit={(e) => e.preventDefault()}>
                             <h1>Log In</h1>
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
@@ -101,10 +127,10 @@ export default function LoginPage() {
                                 <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
                             <span>or use your email password</span>
-                            <input type="email" placeholder="Email" />
-                            <input type="password" placeholder="Password" />
+                            <input type="email" name='email' placeholder="Email" onChange={handleInputChange}/>
+                            <input type="password" name='password' placeholder="Password" onChange={handleInputChange}/>
                             <a href="/">Forget Your Password?</a>
-                            <Link to="/home"><button>Log In</button></Link>
+                            <button type="button" onClick={handleLogin}>Log In</button>
                         </form>
                     </div>
                     <div className="toggle-container">

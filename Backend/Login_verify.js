@@ -18,18 +18,19 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-const User = mongoose.model('On-site_login', userSchema);
+const User = mongoose.model('On-site_logins', userSchema);
 
-// app.use(cors());
+app.use(cors());
 
 app.use(bodyParser.json());
 
 // Handle login (POST request)
 app.post('/logg', async (req, res) => {
-  const { email, password } = req.body;
-  try {
+  try{
+    const { email, password } = req.body;
+    console.log('Login attempt for email:', email);
     // Find a user by email
-    const user = await User.findOne({ email });
+    const user = await User.findOne({email});
 
     if (user) {
       // Check if the password matches
