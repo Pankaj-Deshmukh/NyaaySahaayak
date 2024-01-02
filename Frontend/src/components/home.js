@@ -1,8 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './css/home.css'
 
-export default function Home() {
 
+export default function Home() {
+const [searchTerm,setSearchTerm] = useState('')
+
+const handleSearch = () => {
+  // Send the search term to the server
+  fetch('http://localhost:3003/search', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ term: searchTerm }),
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data))
+    .catch((error) => console.error('Error saving search history:', error));
+};
   return (
     <>
       <html lang="en">
@@ -60,8 +75,8 @@ export default function Home() {
                 </div> 
               </div>
               <div className="Footer">
-                <input className="SearchBar" placeholder="Search..." type="search"/>
-                  <button className="SearchButton"><i className="fa-solid fa-search"></i></button>
+                <input className="SearchBar" placeholder="Search..." type="search" value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}/>
+                  <button className="SearchButton" onClick={handleSearch}><i className="fa-solid fa-search"></i></button>
                   <button className="voice-search"><i className="fa-solid fa-microphone"></i></button>
               </div>
             </div>
