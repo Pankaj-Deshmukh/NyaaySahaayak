@@ -4,7 +4,7 @@ const cors = require('cors');
 const { connectToDatabase, mongoose } = require('./mongo_search_history');
 
 const app = express();
-const PORT = ;
+const PORT = 3002 ;
 
 
 app.use(cors()); // Enable CORS for all routes
