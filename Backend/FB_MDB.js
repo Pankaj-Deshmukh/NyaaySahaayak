@@ -4,7 +4,7 @@ const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 mongoose.connect('mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/NHK_users', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
