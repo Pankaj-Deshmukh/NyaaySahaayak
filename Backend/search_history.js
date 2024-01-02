@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const { connectToDatabase, mongoose } = require('./mongo2');
+const { connectToDatabase, mongoose } = require('./mongo_search_history');
 
 const app = express();
 const PORT = 3000;
