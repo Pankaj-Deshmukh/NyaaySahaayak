@@ -130,7 +130,7 @@ export default function LoginPage() {
                             <input type="email" name='email' placeholder="Email" onChange={handleInputChange}/>
                             <input type="password" name='password' placeholder="Password" onChange={handleInputChange}/>
                             <a href="/">Forget Your Password?</a>
-                            <button type="button" onClick={handleLogin}>Log In</button>
+                            <a href="/home"><button type="button" onClick={handleLogin}>Log In</button></a>
                         </form>
                     </div>
                     <div className="toggle-container">
