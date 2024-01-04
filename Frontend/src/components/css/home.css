@@ -34,7 +34,7 @@ h1,h3{
     justify-content: center;
     align-items: center;
 }
-.hystory-content{
+.history-content{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

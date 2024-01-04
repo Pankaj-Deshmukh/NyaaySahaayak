@@ -4,6 +4,7 @@ import './css/home.css'
 
 export default function Home() {
 const [searchTerm,setSearchTerm] = useState('')
+const [searchHistory, setSearchHistory] = useState([]);
 
 const handleSearch = () => {
   // Send the search term to the server
@@ -15,7 +16,9 @@ const handleSearch = () => {
     body: JSON.stringify({ term: searchTerm }),
   })
     .then((response) => response.json())
-    .then((data) => console.log(data))
+    .then((data) => {console.log(data);
+    setSearchHistory(data.history)
+  })
     .catch((error) => console.error('Error saving search history:', error));
 };
   return (
@@ -32,7 +35,13 @@ const handleSearch = () => {
           <div className="Body">
             <div className="History">
               <div className="items"><h3 id="HistoryHeading">HISTORY</h3></div>
-              <div className="items">
+              {searchHistory.slice(0, 7).map((item, index) => (
+                <div key={index} className="items">
+                  <p className="history-content">{item.heading}</p>
+                  {/* <p className="history-content">{item.content}</p> */}
+              </div>
+              ))}
+              {/* <div className="items">
                 <h4 className="heading">heading</h4>
                 <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
               </div>
@@ -54,11 +63,7 @@ const handleSearch = () => {
               </div>
               <div className="items">
                 <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
+              <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>*/}
               </div>
             </div>
             <div className="Main-body">
@@ -80,7 +85,7 @@ const handleSearch = () => {
                   <button className="voice-search"><i className="fa-solid fa-microphone"></i></button>
               </div>
             </div>
-          </div>
+          {/* </div> */}
         </body>
       </html>
     </>

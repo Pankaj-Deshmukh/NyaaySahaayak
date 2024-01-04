@@ -1,43 +1,43 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const cors = require('cors')
 
 const app = express();
 const port = 3003;
 
-mongoose.connect('mongodb://localhost:27017/searches', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
+// Connect to MongoDB (make sure MongoDB is running)
+mongoose.connect('mongodb://localhost:27017/search_history', { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Define MongoDB schema and model for search history
+const searchHistorySchema = new mongoose.Schema({
+  heading: String,
+  content: String,
+  timestamp: { type: Date, default: Date.now }
 });
 
-const userSchema = new mongoose.Schema({
-  query: String,
-});
+const SearchHistory = mongoose.model('SearchHistory', searchHistorySchema);
 
-const User = mongoose.model('searches', userSchema);
-
-app.use(cors());
+// Middleware to parse JSON requests
+app.use(cors())
 app.use(bodyParser.json());
 
+// Endpoint to handle search requests
 app.post('/search', async (req, res) => {
-  try {
-    const { term } = req.body;
+  const searchTerm = req.body.term;
 
-    // Creating a new User instance with the provided term
-    const user = new User({ query: term });
+  // Save search history to MongoDB
+  const searchEntry = new SearchHistory({ heading: `"${searchTerm}"`});
+  await searchEntry.save();
 
-    // Saving the user instance to the database
-    await user.save();
+  // Retrieve latest search history (limited to 7 items)
+  const history = await SearchHistory.find().sort({ timestamp: -1 }).limit(7);
 
-    res.status(201).json({ message: 'Search is saved successfully' });
-    console.log("The search is saved successfully");
-  } catch (error) {
-    console.error("Error during saving the search:", error);
-    res.status(500).json({ message: 'Internal Server Error' });
-  }
+  // Respond with search history
+  res.json({ history });
 });
 
+// Start the server
 app.listen(port, () => {
-  console.log('Server is running on http://localhost:${port}');
+  console.log(`Server is running on http://localhost:${port}`);
 });
