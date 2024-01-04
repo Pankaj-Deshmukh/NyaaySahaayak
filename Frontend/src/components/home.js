@@ -10,9 +10,6 @@ export default function Home() {
     // Send the search term to the server
     fetch('http://localhost:3003/search', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
       body: JSON.stringify({ term: searchTerm }),
     })
       .then((response) => response.json())
@@ -36,35 +33,11 @@ export default function Home() {
           <div className="Body">
             <div className="History">
               <div className="items"><h3 id="HistoryHeading">HISTORY</h3></div>
-              {searchHistory.slice(0, 7).map((item, index) => (
+              {searchHistory.map((item, index) => (
                 <div key={index} className="items">
-                  <p className="history-content">{item.heading}</p>
-                  {/* <p className="history-content">{item.content}</p> */}
+                  <p className="history-content">{item.content}</p>
                 </div>
               ))}
-              {/* <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-                <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>
-              </div>
-              <div className="items">
-                <h4 className="heading">heading</h4>
-              <p className="hystory-content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias, sequi.</p>*/}
             </div>
             <div className="Main-body">
               <button className="ProfileButton"><i className="fa-solid fa-user"></i></button>
