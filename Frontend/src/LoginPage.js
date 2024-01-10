@@ -101,16 +101,22 @@ export default function LoginPage() {
             </head>
 
             <body>
+                  {/* SIGN UP */}
+
                 <div className={`container ${isSignUp ? 'active' : ''}`} id="container">
                     {/* Your form containers go here */}
                     <div className="form-container sign-up">
                         <form onSubmit={(e) => e.preventDefault()}>
                             <h1>Create Account</h1>
+
+                            {/* For login with faceboob, google */}
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
                                 <Link href="/" className="icon" onClick={FB}><i className="fa-brands fa-facebook-f"></i></Link>
                                 <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
+
+                            {/* For signinp up manually */}
                             <span>or use your email for registeration</span>
                             <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
                             <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
@@ -118,14 +124,20 @@ export default function LoginPage() {
                             <a href='/'><button type="button" onClick={handleSignup}>Sign Up</button></a>
                         </form>
                     </div>
+
+                      {/* LOG IN */}
                     <div className="form-container sign-in">
                         <form onSubmit={(e) => e.preventDefault()}>
+
+                          {/* For login with faceboob, google */}
                             <h1>Log In</h1>
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
                                 <Link href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></Link>
                                 <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
                             </div>
+
+                            {/* Manual login */}
                             <span>or use your email password</span>
                             <input type="email" name='email' placeholder="Email" onChange={handleInputChange}/>
                             <input type="password" name='password' placeholder="Password" onChange={handleInputChange}/>
@@ -133,6 +145,8 @@ export default function LoginPage() {
                             <a href="/home"><button type="button" onClick={handleLogin}>Log In</button></a>
                         </form>
                     </div>
+
+                      {/* For buttons in transition.. */}
                     <div className="toggle-container">
                         <div className="toggle">
                             <div className={`toggle-panel toggle-left ${!isSignUp ? 'hidden' : ''}`}>
