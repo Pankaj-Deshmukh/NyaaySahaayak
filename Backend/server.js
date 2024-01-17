@@ -7,7 +7,7 @@ const app = express();
 const PORT = 3001;
 
 // Connect to MongoDB
-mongoose.connect('mongodb+srv://NHKusers:NHKusers@nhkusers.okqyjty.mongodb.net/NHK_users', {
+mongoose.connect('mongodb+srv://kalyanppc:8m901HsB9dku8UVb@cluster0.4tv9pkp.mongodb.net/project', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
@@ -37,8 +37,7 @@ app.post('/signup', async (req, res) => {
     }
 
     // Create a new user
-    const newUser = new User({ name, email, password });
-    await newUser.save();
+    const newUser = await User.create({ name, email, password });
 
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
