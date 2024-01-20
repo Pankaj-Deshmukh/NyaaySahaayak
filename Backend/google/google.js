@@ -1,7 +1,7 @@
 const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
-const UserModel = require('./google_mongo');
+const { UserModel } = require('../db/index');
 const cors = require('cors');
 require('./google_passport');
 // const http = require('http');

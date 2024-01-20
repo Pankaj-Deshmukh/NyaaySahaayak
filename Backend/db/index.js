@@ -35,6 +35,15 @@ const LoginSchema = mongoose.Schema({
   }
 
 });
+
+const mongoscheema = new mongoose.Schema({
+  name:{
+      type:String,
+  },
+  gmailid:{
+      type:String
+  }
+});
 const searchHistorySchema = new mongoose.Schema({
     content: String,
     timestamp: { type: Date, default: Date.now }
@@ -44,11 +53,12 @@ const user = mongoose.model('facebook_datas', {
   facebookId: String,
   displayName: String,
 });
-
+const UserModel =  mongoose.model("Google_data",mongoscheema);
 const User = mongoose.model('On-site_login', userSchema);
 const SearchHistory = mongoose.model('SearchHistory', searchHistorySchema);
 
 module.exports = {
+    UserModel,
     user,
     User,
     SearchHistory
