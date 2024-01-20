@@ -3,23 +3,17 @@ const mongoose = require('mongoose');
 const passport = require('passport');
 const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
+const { user } = require('../db/index');
 const app = express();
 const PORT = process.env.PORT || 3002;
-mongoose.connect('mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/NHK_users', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
-const User = mongoose.model('facebook_datas', {
-  facebookId: String,
-  displayName: String,
-});
+
 
 passport.use(new FacebookStrategy({
   clientID: '259611373759652',
   clientSecret: 'f91df7a5e17de1712404c9e0421439cd',
   callbackURL: 'http://localhost:3001/auth/facebook/callback',
 }, (accessToken, refreshToken, profile, done) => { 
-  const newUser = new User({
+  const newUser = new user({
     facebookId: profile.id,
     displayName: profile.displayName,
   });
@@ -41,7 +35,7 @@ passport.serializeUser((user, done) => {
 }),
 
 passport.deserializeUser((id, done) => {
-    User.findById(id).exec()
+    user.findById(id).exec()
       .then((user) => {
         done(null, user);
       })
