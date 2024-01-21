@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 // Connect to MongoDB
-mongoose.connect("mongodb+srv://NHKusers:NHKusers@nhkusers.okqyjty.mongodb.net/NHK_users", {
+mongoose.connect("mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
 .then(() => {
-    console.log("MongoDB connected");
+    console.log("MongoDB connected");             //mongodb+srv://NHKusers:NHKusers@nhkusers.okqyjty.mongodb.net/NHK_users
 })
 .catch((error) => {
     console.error("Failed to connect to MongoDB:", error);
