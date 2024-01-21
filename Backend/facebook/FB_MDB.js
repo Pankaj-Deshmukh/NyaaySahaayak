@@ -5,7 +5,7 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const { user } = require('../db/index');
 const app = express();
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 3001;
 
 
 passport.use(new FacebookStrategy({

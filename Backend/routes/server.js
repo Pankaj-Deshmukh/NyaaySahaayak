@@ -52,7 +52,7 @@ router.post("/logg",async (req,res)=>{
   }
 })
 // Endpoint to handle search requests
-app.post('/search', async (req, res) => {
+router.post('/search', async (req, res) => {
   const searchTerm = req.body.term;
 
   // Save search history to MongoDB
