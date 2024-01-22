@@ -5,6 +5,10 @@ const router = Router();
 
 
 // Handle signup (POST request)
+
+router.get('/signup', async(req,res) => {
+  res.json("Hello people");
+})
 router.post('/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -13,12 +17,13 @@ router.post('/signup', async (req, res) => {
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
+      console.log("Email is registered already")
       return res.status(400).json({ message: 'Email is already registered' });
     }
 
     // Create a new user
     const newUser = await User.create({ name, email, password });
-
+    console.log("New user: ",newUser);
     res.status(201).json({ message: 'User registered successfully' });
   } catch (error) {
     console.error("Error during signup:",error);

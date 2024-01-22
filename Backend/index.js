@@ -8,7 +8,7 @@ const PORT = 3001;
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/normal',normalLoginRoutes);
+app.use('/',normalLoginRoutes);
 
 
 app.listen(PORT, () => {

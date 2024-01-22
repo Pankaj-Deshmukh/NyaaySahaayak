@@ -4,7 +4,7 @@ const GoogleStrategy=require('passport-google-oauth2').Strategy;
 const session = require('express-session');
 const { UserModel } = require('../db/index');
 const cors = require('cors');
-require('./google_passport');
+// require('./google_passport');
 
 
 const app = express();
