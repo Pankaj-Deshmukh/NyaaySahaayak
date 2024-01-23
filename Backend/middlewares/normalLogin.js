@@ -9,6 +9,8 @@ function normalLoginMiddleware(req,res,next){
       const originalToken = words[1];
       const decodedToken = jwt.verify(originalToken);
       if(decodedToken){
+            res.username = decodedToken.username;
+            res.email = decodedToken.email;
             next();
       }else{
             res.status(403).json({

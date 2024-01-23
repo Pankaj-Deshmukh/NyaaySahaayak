@@ -22,6 +22,7 @@ export default function LoginPage() {
     email: '',
     password: '',
   });
+  const [token,setToken] = useState({token:null})
 
   const navigate = useNavigate();
 
@@ -37,7 +38,8 @@ export default function LoginPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(signupData),
-      });
+      }
+      );
 
       const data = await response.json();
 
@@ -65,7 +67,14 @@ export default function LoginPage() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(loginData),
-      });
+      }
+      .then(res => res.json())
+      .then(result =>{
+          setToken({token: result.token})
+          localStorage.setItem('token',JSON.stringify(result.token))
+          console.log(result.token);
+      })
+    );
 
       const data = await response.json();
 
