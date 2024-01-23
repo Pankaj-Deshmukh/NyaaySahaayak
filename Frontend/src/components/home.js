@@ -55,12 +55,7 @@ export default function Home() {
                 {/* comment the scroll-body to get the background image */}
                 <div className="scroll-body">
                   <div className="content-box">
-                    {/* Render your data here */}
-                    {searchHistory.map((item, index) => (
-                      <div key={index} className="items">
-                        <p className="history-content">{item.content}</p>
-                      </div>
-                    ))}
+                    
                   </div>
                 </div>
               </div>
