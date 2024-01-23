@@ -4,7 +4,17 @@ import './css/home.css';
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-
+  const [userDetails, setUserDetails] = useState({username:"",email:""})
+  useEffect(()=>{
+      fetch('http://localhost:3001/search/accountDetails')
+      .then(res => res.json())
+      .then(data=>{
+          setUserDetails({
+            username: data.username,
+            email: data.email
+          })
+      })
+  },[])
   const handleSearch = () => {
     console.log("Search Term: ", searchTerm);
     // Send the search term to the server
