@@ -10,6 +10,10 @@ const databaseName = 'NHK_dataset';
 app.set('view engine', 'hbs');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', (req, res) => {
+    res.render("./index.hbs");
+});
+
 const connectToDatabase = async () => {
     return MongoClient.connect(url);
 };
@@ -60,15 +64,15 @@ app.post('/submit', async (req, res) => {
          const documentsWithMaxKeywords = newarr.filter(obj => obj.keywords && obj.keywords.split(' ').length >= maxCount);
 
         console.log('maxCount:', maxCount);
-console.log('Keyword counts:', keywordCounts);
+        console.log('Keyword counts:', keywordCounts);
 
+
+        const descriptionToSend = documentsWithMaxKeywords.length > 0 ? documentsWithMaxKeywords[0].description : null;
 
         res.status(200).json({
             // highest_occuring_keywords: maxKeywords,
-            documents_with_highest_keywords: documentsWithMaxKeywords[0]
+            description_with_highest_keywords: descriptionToSend
         });
-
-        // res.json(newarr);
         
     } catch (error) {
         console.error("Error:", error);
