@@ -7,10 +7,14 @@ export default function Home() {
   const [searchHistory, setSearchHistory] = useState([]);
 
   const handleSearch = () => {
+    console.log("Search Term: ",searchTerm)
     // Send the search term to the server
-    fetch('http://localhost:3003/search', {
+    fetch('http://localhost:3001/search', {
       method: 'POST',
       body: JSON.stringify({ term: searchTerm }),
+      headers: {
+        'Content-Type': 'application/json',
+      },
     })
       .then((response) => response.json())
       .then((data) => {

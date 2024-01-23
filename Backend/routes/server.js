@@ -58,6 +58,7 @@ router.post("/logg",async (req,res)=>{
 })
 // Endpoint to handle search requests
 router.post('/search', async (req, res) => {
+  console.log("Received search query: ",req.body)
   const searchTerm = req.body.term;
 
   // Save search history to MongoDB
