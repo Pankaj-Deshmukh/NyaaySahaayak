@@ -154,3 +154,10 @@ h1,h3{
     border-radius: 22.5px;
     margin-left: 10px;
 }
+.search-history-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+  }
+  

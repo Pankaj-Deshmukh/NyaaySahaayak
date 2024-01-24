@@ -4,9 +4,11 @@ import './css/home.css';
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
+  const [highestKeywordDescription, setHighestKeywordDescription] = useState('');
 
   const handleSearch = () => {
     console.log("Search Term: ", searchTerm);
+
     // Send the search term to the server
     fetch('http://localhost:3001/search', {
       method: 'POST',
@@ -17,15 +19,23 @@ export default function Home() {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log("Response from server:", data);
 
-        // Check if data.history is defined before setting the state
-        if (data.history) {
-          setSearchHistory(data.history);
+        // Check if description_with_highest_keywords is defined before setting the state
+        if (data.description_with_highest_keywords) {
+          setHighestKeywordDescription(data.description_with_highest_keywords);
+
+          // Optional: Update search history if available in the server response
+          if (data.history) {
+            setSearchHistory(data.history);
+          }
+        } else {
+          console.log("No description_with_highest_keywords in the response from the server.");
         }
       })
       .catch((error) => console.error('Error saving search history:', error));
   };
+
   return (
     <>
       <html lang="en">
@@ -54,9 +64,10 @@ export default function Home() {
               <div className="Middle">
                 {/* comment the scroll-body to get the background image */}
                 <div className="scroll-body">
-                  <div className="content-box">
-                    
-                  </div>
+                <div className="content-box">
+                </div>
+                <p>{highestKeywordDescription}</p>
+
                 </div>
               </div>
               <div className="Footer">
