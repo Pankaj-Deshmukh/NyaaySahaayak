@@ -3,13 +3,11 @@ const {User,SearchHistory} = require('../db/index');
 const userMiddleware = require('../middlewares/normalLogin');
 const JWT_SECRET = require("../passwords");
 const router = Router();
+const cors = require('cors')
+const jwt = require('jsonwebtoken')
 
-
+router.use(cors());
 // Handle signup (POST request)
-
-router.get('/signup', async(req,res) => {
-  res.json("Hello people");
-})
 router.post('/signup', async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -31,32 +29,71 @@ router.post('/signup', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
-router.post("/logg",async (req,res)=>{
-  try{
-    const {username,email,password} =req.body;
-    const user = await User.findOne({
-      username,
-      email,
-      password
-    })
+
+
+// router.post("/logg",async (req,res)=>{
+//   console.log("Helloooo")
+//   try{
+//     console.log("Accessing the email and password elements of login data")
+//     const {email,password} =req.body;
+//     const user = await User.findOne({
+//       email,
+//       password
+//     })
+//     console.log(user);
+//     if(user){
+//       const token = jwt.sign({email,password},JWT_SECRET);
+//       console.log(token);
+//       res.status(200).json({
+//           token: "Bearer "+token
+//       })
+//     }else{
+//       console.log("Error in backend login verification")
+//       res.status(403).json({
+//         msg: "you have given the wrong details"
+//     })
+//   }
+//   }catch(err){
+//     res.status(411).json({
+//       msg: "Something went wrong"
+//     })
+//   }
+// })
+
+router.post("/logg", async (req, res) => {
+  console.log("Helloooo");
+  try {
+    console.log("Accessing the email and password elements of login data");
+    const { email, password } = req.body;
+    const user = await User.findOne({ email, password });
     console.log(user);
-    if(user){
-      const token = jwt.sign({username,email},JWT_SECRET);
+    
+    if (user) {
+      console.log("User credentials are valid...")
+      const token = jwt.sign({ email, password }, JWT_SECRET);
       console.log(token);
-      res.status(400).json({
-          token: "Bearer "+token
-      })
-    }else{
-      res.status(403).json({
-        msg: "you have given the wrong details"
-    })
+      res.status(200).json({
+        token: "Bearer " + token,
+      });
+    } else {
+      console.log("Error in backend login verification");
+      res.status(401).json({
+        msg: "Incorrect email or password",
+      });
+    }
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({
+      msg: "Something went wrong",
+    });
   }
-  }catch(err){
-    res.status(411).json({
-      msg: "Something went wrong"
-    })
-  }
-})
+});
+
+
+// router.get('/logg',(req,res)=>{
+//   console.log("Get of /logg is working")
+//   res.json({msg: "Hello poeple"});
+// })
 // Endpoint to handle search requests
 router.post('/search', async (req, res) => {
   console.log("Received search query: ",req.body)

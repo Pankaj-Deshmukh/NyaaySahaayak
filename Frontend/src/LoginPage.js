@@ -46,7 +46,7 @@ export default function LoginPage() {
 
       if (response.ok) {
         console.log(data.message);
-        navigate('/login');
+        navigate('/');
         prompt("User registered successfully");
       } else {
         if (data.message === 'Email is already registered') {
@@ -60,37 +60,105 @@ export default function LoginPage() {
     }
   };
 
+  // const handleLogin = async () => {
+  //   try {
+  //     console.log("Trying to fetch the backend of login.")
+  //     const response = await fetch('http://localhost:3001/logg', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(loginData),
+  //     })
+  //     .then(res => res.json())
+  //     .then(result =>{
+  //         setToken({token: result.token})
+  //         localStorage.setItem('token',JSON.stringify(result.token))
+  //         console.log(result.token);
+  //     });
+
+  //     const data = await response.json();
+
+  //     if (response.ok && data.isValid) {
+  //       console.log(data.user);
+  //       // Perform actions after successful login, e.g., set user in state, redirect, etc.
+  //       // navigate('/home');
+  //     } else {
+  //       console.error('Error during loginnn:', data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error during loginnnnnnnnnnnnn:', error);
+  //   }
+  // };
+
+
+  // const handleLogin = async () => {
+  //   try {
+  //     console.log("Trying to fetch the backend of login.");
+  //     const response = await fetch('http://localhost:3001/logg', {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //       },
+  //       body: JSON.stringify(loginData),
+  //     })
+
+  //     console.log(response)
+  //       .then(res => res.json())
+  //       .then(result => {
+  //         setToken({ token: result.token });
+  //         localStorage.setItem('token', JSON.stringify(result.token));
+  //         console.log(result.token);
+  //       });
+  
+  //     const data = await response.json();
+  
+  //     if (response.ok && data.isValid) {
+  //       console.log(data.user);
+  //       // Perform actions after successful login, e.g., set user in state, redirect, etc.
+  //       // navigate('/home');
+  //     } else {
+  //       console.error('Error during loginnn:', data.message);
+  //     }
+  //   } catch (error) {
+  //     console.error('Error during loginnnnnnnnnnnnn:', error);
+  //   }
+  // };
+  
   const handleLogin = async () => {
     try {
+      console.log("Trying to fetch the backend of login.");
+  
+      const bodyContent = JSON.stringify(loginData);
+  
       const response = await fetch('http://localhost:3001/logg', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Content-Length': bodyContent.length.toString(),
         },
-        body: JSON.stringify(loginData),
-      }
-      .then(res => res.json())
-      .then(result =>{
-          setToken({token: result.token})
-          localStorage.setItem('token',JSON.stringify(result.token))
-          console.log(result.token);
-      })
-    );
-
-      const data = await response.json();
-
-      if (response.ok && data.isValid) {
-        console.log(data.user);
+        body: bodyContent,
+      });
+  
+      const result = await response.json();
+      setToken({ token: result.token });
+      localStorage.setItem('token', JSON.stringify(result.token));
+      console.log(result.token);
+  
+      if (response.ok) {
+        console.log(result.user);
         // Perform actions after successful login, e.g., set user in state, redirect, etc.
         navigate('/home');
       } else {
-        console.error('Error during login:', data.message);
+        console.error('Error during loginnn:', result);
+        // navigate('/home');
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error('Error during loginnnnnnnnnnnnn:', error);
     }
   };
 
+  
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     if (isSignUp) {
@@ -139,7 +207,7 @@ export default function LoginPage() {
                     <div className="form-container sign-in">
                         <form onSubmit={(e) => e.preventDefault()}>
 
-                          {/* For login with faceboob, google */}
+                          {/* For login with facebook, google */}
                             <h1>Log In</h1>
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
@@ -152,7 +220,7 @@ export default function LoginPage() {
                             <input type="email" name='email' placeholder="Email" onChange={handleInputChange}/>
                             <input type="password" name='password' placeholder="Password" onChange={handleInputChange}/>
                             <a href="/">Forget Your Password?</a>
-                            <a href="/home"><button type="button" onClick={handleLogin}>Log In</button></a>
+                            <button type="button" onClick={handleLogin}>Log In</button>
                         </form>
                     </div>
 
