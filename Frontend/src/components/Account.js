@@ -15,13 +15,9 @@ function Account({ onClose }) {
                 <div className='x' onClick={onClose}><X /></div>
                 <h2>User Information</h2>
                 <hr />
-                <p>
-                    <strong>User Name:</strong> John Doe
-                </p>
+                <p><strong>User Name:</strong> John Doe</p>
                 <hr />
-                <p>
-                    <strong>Email:</strong> john.doe@example.com
-                </p>
+                <p><strong>Email:</strong> john.doe@example.com</p>
                 <hr />
                 <button>Logout</button>
             </div>
