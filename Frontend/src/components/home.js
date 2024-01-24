@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './css/home.css'
+import Account from './Account';
 
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchHistory, setSearchHistory] = useState([]);
-
+  const [showAccount,setAccount]= useState(false)
   const handleSearch = () => {
     // Send the search term to the server
     fetch('http://localhost:3003/search', {
@@ -40,7 +41,8 @@ export default function Home() {
               ))}
             </div>
             <div className="Main-body">
-              <button className="ProfileButton"><i className="fa-solid fa-user"></i></button>
+              <button className="ProfileButton" onClick={()=> setAccount(true)}><i className="fa-solid fa-user"></i></button>
+              {showAccount && <Account onClose={()=>setAccount(false)} />}
               <div className="Header">
                 <h1 className="body-heading">NyaaySahaayak</h1>
               </div>

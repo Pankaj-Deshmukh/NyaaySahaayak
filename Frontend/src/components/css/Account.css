@@ -1,0 +1,43 @@
+.popup-container {
+    
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.x{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+.popup-container h2 {
+    margin-bottom: 10px;
+}
+
+.popup-container p {
+    margin-bottom: 20px;
+}
+
+.popup-container button{
+    transform: translateX(90%);
+    margin-right: 10px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.popup-container button:last-child {
+    margin-right: 0;
+}
+
+.popup-container button:hover {
+    background-color: #ccc;
+}
+.accountCover{
+    background: transparent;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+}
