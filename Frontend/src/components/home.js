@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import './css/home.css';
+import React, { useEffect, useState } from 'react';
+import './css/home.css'
+import Account from './Account';
+
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [highestKeywordDescription, setHighestKeywordDescription] = useState('');
+  const [showAccount,setAccount]= useState(false);
+  const [userDetails1, setUserDetails] = useState({
+      username: "hello",
+      email: "world"
+  })
 
   const handleSearch = () => {
     console.log("Search Term: ", searchTerm);
@@ -36,6 +43,16 @@ export default function Home() {
       .catch((error) => console.error('Error saving search history:', error));
   };
 
+  const userDetails = useEffect(()=>{
+    fetch("http://localhost:3001/accountDetails")
+    .then(data=> data.json())
+    .then(newData =>{
+        setUserDetails({
+          username: newData.username,
+          email: newData.email
+        })      
+    })
+  },[])
   return (
     <>
       <html lang="en">
@@ -57,7 +74,8 @@ export default function Home() {
               ))}
             </div>
             <div className="Main-body">
-              <button className="ProfileButton"><i className="fa-solid fa-user"></i></button>
+              <button className="ProfileButton" onClick={()=> setAccount(true)}><i className="fa-solid fa-user"></i></button>
+              {showAccount && <Account onClose={()=>setAccount(false)} username={userDetails1.username} email={userDetails1.email} />}
               <div className="Header">
                 <h1 className="body-heading">NyaaySahaayak</h1>
               </div>
