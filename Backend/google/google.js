@@ -3,20 +3,20 @@ const passport = require('passport');
 const session = require('express-session');
 const UserModel = require('./google_mongo');
 const cors = require('cors');
-require('./google_passport');
+require('./google_pass');
 // const http = require('http');
 const app = express();
-// const corsOptions = {
-//   origin: 'http://localhost:3000',
-//   credentials: true,
-// };
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
 
-// app.use(cors(corsOptions));
-app.use(session({
-  secret: 'your-secret-key',
-  resave: false,
-  saveUninitialized: true
-}));
+app.use(cors(corsOptions));
+// app.use(session({
+//   secret: 'your-secret-key',
+//   resave: false,
+//   saveUninitialized: true
+// }));
 
 app.use(passport.initialize());
 app.use(passport.session());

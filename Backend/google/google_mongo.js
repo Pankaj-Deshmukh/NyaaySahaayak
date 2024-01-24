@@ -1,18 +1,20 @@
-const passport=require("passport")
-
-const GoogleStrategy=require('passport-google-oauth2').Strategy
-
-passport.use(new GoogleStrategy({
-    clientID:"601511902773-425guolbghpg62c970bp268hrv54cjvk.apps.googleusercontent.com",
-    clientSecret: "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",
-    callbackURL: "http://localhost:4000/auth/callback",
-    passReqToCallback:true
-  },function(request,accessToken,refreshToken,profile,done){
-      done(null,profile)
-  }))
-passport.serializeUser((user,done)=>{
-  done(null,user)
+const mongoose = require('mongoose');
+mongoose.connect("mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/NHK_users")
+.then(()=>{
+    console.log("connected to db");
 })
-passport.deserializeUser((user,done)=>{
-  done(null,user)
+.catch(()=>{
+    console.log("acces denied");
+});
+const mongoscheema = new mongoose.Schema({
+    name:{
+        type:String,
+    },
+    gmailid:{
+        type:String
+    }
+},{
+    collection:'Google_data'
 })
+const model =  mongoose.model("Google_data",mongoscheema)
+module.exports=model
