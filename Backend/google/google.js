@@ -1,34 +1,19 @@
 const express = require('express');
 const passport = require('passport');
-const GoogleStrategy=require('passport-google-oauth2').Strategy;
 const session = require('express-session');
-const { UserModel } = require('../db/index');
+const UserModel = require('./google_mongo');
 const cors = require('cors');
-// require('./google_passport');
-
-
+require('./google_passport');
+// const http = require('http');
 const app = express();
+// const corsOptions = {
+//   origin: 'http://localhost:3000',
+//   credentials: true,
+// };
 
-
-passport.use(new GoogleStrategy({
-  clientID:"601511902773-425guolbghpg62c970bp268hrv54cjvk.apps.googleusercontent.com",
-  clientSecret: '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',
-  callbackURL: "http://localhost:4000/auth/callback",
-  passReqToCallback:true
-},function(request,accessToken,refreshToken,profile,done){
-    done(null,profile)
-  }));
-
-passport.serializeUser((user,done)=>{
-  done(null,user)
-}),
-passport.deserializeUser((user,done)=>{
- done(null,user)
-}),
-
-
+// app.use(cors(corsOptions));
 app.use(session({
-  secret: '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',
+  secret: 'your-secret-key',
   resave: false,
   saveUninitialized: true
 }));
