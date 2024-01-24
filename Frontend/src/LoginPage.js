@@ -23,21 +23,14 @@ export default function LoginPage() {
     password: '',
   });
   const [token,setToken] = useState({token:null})
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
 
   const navigate = useNavigate();
 
   const handleToggle = () => {
     setIsSignUp(!isSignUp);
   };
-  // function for logging out.(Should call this function when the logoutButton is clicked in AccountDetails)
-  const handleLogout = () => {
-    localStorage.removeItem('token');
-    // we dont have to add a new react state but adding it just in case if we use it in the future.
-    setIsLoggedIn(false);
-    //### we should do redirect the user to the /signin or /signup page, that logic we should write.
-    console.log('User logged out');
-  };
+
   const handleSignup = async () => {
     try {
       const response = await fetch('http://localhost:3001/signup', {
