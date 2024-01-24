@@ -58,6 +58,7 @@ router.post("/logg",async (req,res)=>{
 })
 // Endpoint to handle search requests
 router.post('/search', async (req, res) => {
+  console.log("Received search query: ",req.body)
   const searchTerm = req.body.term;
 
   // Save search history to MongoDB
@@ -70,6 +71,14 @@ router.post('/search', async (req, res) => {
   // Respond with search history
   res.json({ history });
 });
-
+// End point for Account Details in the home page.
+router.get('/accountDetails',userMiddleware,(req,res)=>{
+  const username = req.username;
+  const email = req.email;
+  res.status(200).json({
+      username,
+      email
+  })
+})
 
 module.exports = router;
