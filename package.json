@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "Frontend": "cd Frontend && npm start",
-    "Backend": "cd Backend &&npm start",
+    "Backend": "cd Backend && npm start",
     "dev": "concurrently \"npm run Frontend\" \"npm run Backend\""
   },
   "author": "",
