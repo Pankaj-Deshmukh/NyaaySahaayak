@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './css/home.css'
+import Account from './Account';
 
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
-
+  const [showAccount,setAccount]= useState(false)
   const handleSearch = () => {
     console.log("Search Term: ", searchTerm);
     // Send the search term to the server
@@ -57,7 +58,7 @@ export default function Home() {
                 {/* comment the scroll-body to get the background image */}
                 <div className="scroll-body">
                   <div className="content-box">
-                    
+                    hello
                   </div>
                 </div>
               </div>
