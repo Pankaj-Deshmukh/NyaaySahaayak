@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import './css/home.css'
-import Account from './Account';
-
+import './css/home.css';
 
 export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
@@ -59,17 +57,16 @@ export default function Home() {
               ))}
             </div>
             <div className="Main-body">
-              <button className="ProfileButton" onClick={()=> setAccount(true)}><i className="fa-solid fa-user"></i></button>
-              {showAccount && <Account onClose={()=>setAccount(false)} />}
+              <button className="ProfileButton"><i className="fa-solid fa-user"></i></button>
               <div className="Header">
                 <h1 className="body-heading">NyaaySahaayak</h1>
               </div>
               <div className="Middle">
                 {/* comment the scroll-body to get the background image */}
                 <div className="scroll-body">
-                  <div className="content-box">
-                    
-                  </div>
+                <div className="content-box">
+                <p>{highestKeywordDescription}</p>
+                </div>
                 </div>
               </div>
               <div className="Footer">
