@@ -1,5 +1,6 @@
 const {Router} = require('express');
 const {User,SearchHistory} = require('../db/index');
+const userMiddleware = require('../middlewares/normalLogin');
 const JWT_SECRET = require("../passwords");
 const router = Router();
 
