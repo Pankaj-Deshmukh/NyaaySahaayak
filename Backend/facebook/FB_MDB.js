@@ -53,7 +53,7 @@ app.use(passport.session()),
 
 // Facebook authentication routes
 app.get('/auth/facebook', passport.authenticate('facebook', { authType: 'rerequest' })),
-//app.get('/auth/facebook', passport.authenticate('facebook')),
+
 
 app.get('/auth/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/' }),
