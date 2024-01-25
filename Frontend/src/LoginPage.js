@@ -147,6 +147,10 @@ export default function LoginPage() {
   
       if (response.ok) {
         console.log(result.user);
+        console.log(result.email);
+        console.log(result.user.name);
+        localStorage.setItem('username',JSON.stringify(result.user.name));
+        localStorage.setItem('email',JSON.stringify(result.email));
         // Perform actions after successful login, e.g., set user in state, redirect, etc.
         navigate('/home');
       } else {

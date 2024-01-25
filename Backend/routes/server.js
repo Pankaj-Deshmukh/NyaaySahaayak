@@ -72,8 +72,12 @@ router.post("/logg", async (req, res) => {
       console.log("User credentials are valid...")
       const token = jwt.sign({ email, password }, JWT_SECRET);
       console.log(token);
+      const username = user.username;
+      const email1 = user.email;
       res.status(200).json({
         token: "Bearer " + token,
+        user,
+        email: email1
       });
     } else {
       console.log("Error in backend login verification");
@@ -111,14 +115,14 @@ router.post('/search', async (req, res) => {
 
   
 });
-// End point for Account Details in the home page.
-router.get('/accountDetails',userMiddleware,(req,res)=>{
-  const username = req.username;
-  const email = req.email;
-  res.status(200).json({
-      username,
-      email
-  })
-})
+// // End point for Account Details in the home page.
+// router.get('/accountDetails',userMiddleware,(req,res)=>{
+//   const username = req.username;
+//   const email = req.email;
+//   res.status(200).json({
+//       username,
+//       email
+//   })
+// })
 
 module.exports = router;

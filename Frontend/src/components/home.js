@@ -9,8 +9,8 @@ export default function Home() {
   const [highestKeywordDescription, setHighestKeywordDescription] = useState('');
   const [showAccount, setAccount] = useState(false);
   const [userDetails1, setUserDetails] = useState({
-    username: "hello",
-    email: "world"
+    username: localStorage.getItem('username'),
+    email: localStorage.getItem('email')
   })
 
   const handleSearch = () => {
@@ -43,16 +43,16 @@ export default function Home() {
       .catch((error) => console.error('Error saving search history:', error));
   };
 
-  const userDetails = useEffect(() => {
-    fetch("http://localhost:3001/accountDetails")
-      .then(data => data.json())
-      .then(newData => {
-        setUserDetails({
-          username: newData.username,
-          email: newData.email
-        })
-      })
-  }, [])
+  // const userDetails = useEffect(() => {
+  //   fetch("http://localhost:3001/accountDetails")
+  //     .then(data => data.json())
+  //     .then(newData => {
+  //       setUserDetails({
+  //         username: newData.username,
+  //         email: newData.email
+  //       })
+  //     })
+  // }, [])
   return (
     <>
       <html lang="en">
