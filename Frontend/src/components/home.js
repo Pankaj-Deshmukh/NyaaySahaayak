@@ -7,10 +7,10 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [highestKeywordDescription, setHighestKeywordDescription] = useState('');
-  const [showAccount,setAccount]= useState(false);
+  const [showAccount, setAccount] = useState(false);
   const [userDetails1, setUserDetails] = useState({
-      username: "hello",
-      email: "world"
+    username: "hello",
+    email: "world"
   })
 
   const handleSearch = () => {
@@ -43,16 +43,16 @@ export default function Home() {
       .catch((error) => console.error('Error saving search history:', error));
   };
 
-  const userDetails = useEffect(()=>{
+  const userDetails = useEffect(() => {
     fetch("http://localhost:3001/accountDetails")
-    .then(data=> data.json())
-    .then(newData =>{
+      .then(data => data.json())
+      .then(newData => {
         setUserDetails({
           username: newData.username,
           email: newData.email
-        })      
-    })
-  },[])
+        })
+      })
+  }, [])
   return (
     <>
       <html lang="en">
@@ -73,18 +73,18 @@ export default function Home() {
                 </div>
               ))}
             </div>
+            <button className="ProfileButton" onClick={() => setAccount(true)}><i className="fa-solid fa-user"></i></button>
+            {showAccount && <Account onClose={() => setAccount(false)} username={userDetails1.username} email={userDetails1.email} />}
             <div className="Main-body">
-              <button className="ProfileButton" onClick={()=> setAccount(true)}><i className="fa-solid fa-user"></i></button>
-              {showAccount && <Account onClose={()=>setAccount(false)} username={userDetails1.username} email={userDetails1.email} />}
               <div className="Header">
                 <h1 className="body-heading">NyaaySahaayak</h1>
               </div>
               <div className="Middle">
                 {/* comment the scroll-body to get the background image */}
                 <div className="scroll-body">
-                <div className="content-box">
-                <p>{highestKeywordDescription}</p>
-                </div>
+                  <div className="content-box">{/*change it later */}
+                    <p>{highestKeywordDescription}</p>
+                  </div>
                 </div>
               </div>
               <div className="Footer">

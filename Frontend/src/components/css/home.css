@@ -51,16 +51,17 @@ h1,h3{
     text-overflow: ellipsis;
 }
 .Main-body{
-    width:100%;
-    display: grid;
-    grid-template-rows: max-content 1fr max-content;
+    width:100vw;
+    display: flex;
+    flex-direction: column;
+    /* grid-template-rows: max-content 1fr max-content; */
 }
 .ProfileButton{
     background-color: white;
     width:40px;
     height:40px;
     border-radius:15px;
-    border: 2px solid rgb(190, 190, 190);
+    border: 2px solid rgb(0, 0, 0);
     border-radius:13px;
     position: absolute;
     top:20px;
@@ -72,22 +73,22 @@ h1,h3{
     /* can add the new showing profile here maybe... */
 }
 .Header{
-    background-color: rgba(200, 200, 200, 0.716);
-    height: 80px;
-    display: flex;
-    flex: 1;
-    max-width: 1200px;
+    background-color: #512da8;
+    background: linear-gradient(to top, #8755fc, #321576);
+    color: #fff;
+    height: 90px;
+    width: 100%;
+    /* max-width:100vw; */
     padding-left: 20px;
 }
 .Middle{
     height: 100%;
     width: 100%;
-    background-color: white;
     background-image: url(/src/components/Images/scale-34770.png);
     background-size: 40%;
     background-repeat: no-repeat;
-    background-position-x: center;
-    background-position-y: center;
+    background-position: center;
+    
 }
 .body-logo{
     height: 100px;
@@ -97,8 +98,8 @@ h1,h3{
     height: 550px;
     display: flex;
     justify-content: center;
-    overflow-y:scroll;
-    background-color: rgb(255, 255, 255);
+    overflow:auto;
+    background-color: transparent;
 }
 .content-box{
     width: 70%;
@@ -108,8 +109,9 @@ h1,h3{
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-color: whitesmoke;
-    height:80px;
+    background-color: #512da8;
+    background: linear-gradient(to bottom, #8b5ef4, #321576);
+    height:100px;
     border-top: 1px solid black;
 }
 .SearchBar{
@@ -119,7 +121,7 @@ h1,h3{
     max-width: 40rem;
     border-top-left-radius: 22.5px;
     border-bottom-left-radius: 22.5px;
-    border:1px solid black;
+    border:2px solid black;
     padding:0 17px 0 17px;
     font-size: 20px;
     outline: none;
@@ -128,28 +130,17 @@ h1,h3{
 .SearchButton{
     height: 45px;
     width: 70px;
-    margin-left: -1px;
-    border: 1px solid black;
+    margin-left: -2px;
+    border: 2px solid black;
     border-top-right-radius: 22px;
     border-bottom-right-radius: 22px;
     background-color: #fff;
-}
-.SearchButton:hover{
-    cursor: pointer;
-    .SearchBar-img{
-        width: 42px;
-    }
-}
-.SearchButton:active{
-    .SearchBar-img{
-    width: 38px;   
-    }
 }
 
 .voice-search{
     height: 45px;
     width: 45px;
-    border: 1px solid rgb(200, 200, 200);
+    border: 2px solid rgb(0, 0, 0);
     background-color: #fff;
     border-radius: 22.5px;
     margin-left: 10px;
