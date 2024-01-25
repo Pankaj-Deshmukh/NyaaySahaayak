@@ -32,7 +32,7 @@ const searchHistorySchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now }
 });
 
-const user = mongoose.model('facebook_datas', {
+const user = mongoose.model('facebook_datas', {              //facebook
   facebookId: String,
   displayName: String,
 });

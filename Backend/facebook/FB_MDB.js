@@ -5,13 +5,13 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 const session = require('express-session');
 const { user } = require('../db/index');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 
 
 passport.use(new FacebookStrategy({
   clientID: '259611373759652',
   clientSecret: 'f91df7a5e17de1712404c9e0421439cd',
-  callbackURL: 'http://localhost:3001/auth/facebook/callback',
+  callbackURL: 'http://localhost:3003/auth/facebook/callback',
 }, (accessToken, refreshToken, profile, done) => { 
   const newUser = new user({
     facebookId: profile.id,
