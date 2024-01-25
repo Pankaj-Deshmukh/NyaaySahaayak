@@ -30,36 +30,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-
-// router.post("/logg",async (req,res)=>{
-//   console.log("Helloooo")
-//   try{
-//     console.log("Accessing the email and password elements of login data")
-//     const {email,password} =req.body;
-//     const user = await User.findOne({
-//       email,
-//       password
-//     })
-//     console.log(user);
-//     if(user){
-//       const token = jwt.sign({email,password},JWT_SECRET);
-//       console.log(token);
-//       res.status(200).json({
-//           token: "Bearer "+token
-//       })
-//     }else{
-//       console.log("Error in backend login verification")
-//       res.status(403).json({
-//         msg: "you have given the wrong details"
-//     })
-//   }
-//   }catch(err){
-//     res.status(411).json({
-//       msg: "Something went wrong"
-//     })
-//   }
-// })
-
 router.post("/logg", async (req, res) => {
   console.log("Helloooo");
   try {
@@ -93,11 +63,6 @@ router.post("/logg", async (req, res) => {
   }
 });
 
-
-// router.get('/logg',(req,res)=>{
-//   console.log("Get of /logg is working")
-//   res.json({msg: "Hello poeple"});
-// })
 // Endpoint to handle search requests
 router.post('/search', async (req, res) => {
   console.log("Received search query: ",req.body)
@@ -112,17 +77,7 @@ router.post('/search', async (req, res) => {
 
   // Respond with search history
   res.json({ history });
-
   
 });
-// // End point for Account Details in the home page.
-// router.get('/accountDetails',userMiddleware,(req,res)=>{
-//   const username = req.username;
-//   const email = req.email;
-//   res.status(200).json({
-//       username,
-//       email
-//   })
-// })
 
 module.exports = router;

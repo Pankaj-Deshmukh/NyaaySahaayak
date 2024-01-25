@@ -43,16 +43,6 @@ export default function Home() {
       .catch((error) => console.error('Error saving search history:', error));
   };
 
-  // const userDetails = useEffect(() => {
-  //   fetch("http://localhost:3001/accountDetails")
-  //     .then(data => data.json())
-  //     .then(newData => {
-  //       setUserDetails({
-  //         username: newData.username,
-  //         email: newData.email
-  //       })
-  //     })
-  // }, [])
   return (
     <>
       <html lang="en">

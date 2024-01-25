@@ -19,23 +19,6 @@ const userSchema = new mongoose.Schema({            //signup
     password: String,
 });
 
-// const LoginSchema = mongoose.Schema({                   //signup,login
-//   id:{
-//       type: String,
-//       required : true
-//   },
-//   name :{
-//       type : String,
-//       required : true
-//   },
-//   email :{
-//       type : String,
-//       required : true
-      
-//   }
-
-// });
-
 const mongoscheema = new mongoose.Schema({                       //google
   name:{
       type:String,
