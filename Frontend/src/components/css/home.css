@@ -98,13 +98,13 @@ h1,h3{
     height: 550px;
     display: flex;
     justify-content: center;
-    overflow-y:auto;
+    overflow:auto;
     background-color: transparent;
 }
 .content-box{
     width: 70%;
+    height: max-content;
     background-color: #c9d6ff;
-    overflow-y: auto;
     background: linear-gradient(to right, #e2e2e2, #c9d6ff);
 }
 .Footer{
@@ -154,4 +154,3 @@ h1,h3{
     margin-bottom: 5px;
     background-color: #f9f9f9;
   }
-  

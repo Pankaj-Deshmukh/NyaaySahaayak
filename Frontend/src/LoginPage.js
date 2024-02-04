@@ -199,7 +199,7 @@ export default function LoginPage() {
                             <input type="text" name="name" placeholder="Name" onChange={handleInputChange} />
                             <input type="email" name="email" placeholder="Email" onChange={handleInputChange} />
                             <input type="password" name="password" placeholder="Password" onChange={handleInputChange} />
-                            <button type="button" onClick={handleSignup}>Sign Up</button>
+                            <button type="button" onClick={handleSignup} >Sign Up</button>
                         </form>
                     </div>
 

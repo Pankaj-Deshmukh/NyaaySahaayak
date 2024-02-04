@@ -17,7 +17,7 @@ export default function Home() {
     console.log("Search Term: ", searchTerm);
 
     // Send the search term to the server
-    fetch('http://localhost:3001/search', {
+    fetch('http://localhost:3002/search', {
       method: 'POST',
       body: JSON.stringify({ textInput: searchTerm }),
       headers: {
