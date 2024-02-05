@@ -47,7 +47,7 @@ export default function LoginPage() {
       if (response.ok) {
         console.log(data.message);
         navigate('/');
-        prompt("User registered successfully");
+        alert("User registered successfully");
       } else {
         if (data.message === 'Email is already registered') {
           console.error('Email is already registered. Please use a different email.');
@@ -89,11 +89,11 @@ export default function LoginPage() {
         // Perform actions after successful login, e.g., set user in state, redirect, etc.
         navigate('/home');
       } else {
-        console.error('Error during loginnn:', result);
+        console.error('Error during login:', result);
         // navigate('/home');
       }
     } catch (error) {
-      console.error('Error during loginnnnnnnnnnnnn:', error);
+      console.error('Error during login process:', error);
     }
   };
 
@@ -130,7 +130,7 @@ export default function LoginPage() {
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
                                 <Link href="/" className="icon" onClick={FB}><i className="fa-brands fa-facebook-f"></i></Link>
-                                <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
+                                {/* <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link> */}
                             </div>
 
                             {/* For signinp up manually */}
@@ -151,7 +151,7 @@ export default function LoginPage() {
                             <div className="social-icons">
                                 <Link href="/" className="icon" onClick={changeloc4k}><i className="fa-brands fa-google-plus-g"></i></Link>
                                 <Link href="/" className="icon"><i className="fa-brands fa-facebook-f"></i></Link>
-                                <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link>
+                                {/* <Link href="/" className="icon"><i className="fa-solid fa-phone"></i></Link> */}
                             </div>
 
                             {/* Manual login */}

@@ -13,7 +13,7 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 app.use(session({
-  secret: 'your-secret-key',
+  secret: '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',
   resave: false,
   saveUninitialized: true
 }));

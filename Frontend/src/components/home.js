@@ -34,8 +34,7 @@ export default function Home() {
 
           // Optional: Update search history if available in the server response
           if (data.history) {
-            setSearchHistory(data.history);
-          }
+setSearchHistory(data.history.slice(0, 7));          }
         } else {
           console.log("No description_with_highest_keywords in the response from the server.");
         }
