@@ -9,7 +9,6 @@ function SearchBar() {
   const handleChange = (e) => {
     setVal(e.target.value);
     setSearchTerm(e.target.value);
-    console.log("Search Term: ", searchTerm);
 }
 
 const [searchTerm, setSearchTerm] = useState('');

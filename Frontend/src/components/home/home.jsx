@@ -13,7 +13,7 @@ import { FaUserLarge} from "react-icons/fa6";
 
 
 
-function Home() {
+function Home({searchTerm}) {
   const [mode,setMode] = useState(false);
   const changeMode = () => {
    setMode(e => !e);
