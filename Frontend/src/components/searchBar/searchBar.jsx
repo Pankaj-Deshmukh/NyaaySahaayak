@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MdOutlineFileUpload } from "react-icons/md";
 import './searchBar.css';
-import { useAnswer } from '../../hooks/searchBody';
+// import { useAnswer } from '../../hooks/searchBody';
 
 function SearchBar() {
   const textAreaRef = useRef(null);

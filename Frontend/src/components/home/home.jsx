@@ -9,11 +9,11 @@ import TypingHeading from './typingEffect.jsx'
 
 // react icons ...
 import { MdOutlineDoubleArrow } from "react-icons/md";
-import { FaUserLarge } from "react-icons/fa6";
+import { FaUserLarge} from "react-icons/fa6";
 
 
 
-function home() {
+function Home() {
   const [mode,setMode] = useState(false);
   const changeMode = () => {
    setMode(e => !e);
@@ -67,4 +67,4 @@ function home() {
   )
 }
 
-export default home
+export default Home
