@@ -14,6 +14,8 @@ function Account({ onClose, username, email }) {
 //   function for logging out.(Should call this function when the logoutButton is clicked in AccountDetails)
 const handleLogout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
     navigate('/');
     console.log('User logged out');
   };

@@ -8,7 +8,7 @@ const changeloc4k = () => {
 };
 
 const FB = () => {
-  window.location.href = "http://localhost:3001/auth/facebook";
+  window.location.href = "http://localhost:3003/auth/facebook";
 };
 
 export default function LoginPage() {
@@ -59,71 +59,6 @@ export default function LoginPage() {
       console.error('Error during signup:', error);
     }
   };
-
-  // const handleLogin = async () => {
-  //   try {
-  //     console.log("Trying to fetch the backend of login.")
-  //     const response = await fetch('http://localhost:3001/logg', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(loginData),
-  //     })
-  //     .then(res => res.json())
-  //     .then(result =>{
-  //         setToken({token: result.token})
-  //         localStorage.setItem('token',JSON.stringify(result.token))
-  //         console.log(result.token);
-  //     });
-
-  //     const data = await response.json();
-
-  //     if (response.ok && data.isValid) {
-  //       console.log(data.user);
-  //       // Perform actions after successful login, e.g., set user in state, redirect, etc.
-  //       // navigate('/home');
-  //     } else {
-  //       console.error('Error during loginnn:', data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error during loginnnnnnnnnnnnn:', error);
-  //   }
-  // };
-
-
-  // const handleLogin = async () => {
-  //   try {
-  //     console.log("Trying to fetch the backend of login.");
-  //     const response = await fetch('http://localhost:3001/logg', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify(loginData),
-  //     })
-
-  //     console.log(response)
-  //       .then(res => res.json())
-  //       .then(result => {
-  //         setToken({ token: result.token });
-  //         localStorage.setItem('token', JSON.stringify(result.token));
-  //         console.log(result.token);
-  //       });
-  
-  //     const data = await response.json();
-  
-  //     if (response.ok && data.isValid) {
-  //       console.log(data.user);
-  //       // Perform actions after successful login, e.g., set user in state, redirect, etc.
-  //       // navigate('/home');
-  //     } else {
-  //       console.error('Error during loginnn:', data.message);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error during loginnnnnnnnnnnnn:', error);
-  //   }
-  // };
   
   const handleLogin = async () => {
     try {
@@ -147,6 +82,10 @@ export default function LoginPage() {
   
       if (response.ok) {
         console.log(result.user);
+        console.log(result.email);
+        console.log(result.user.name);
+        localStorage.setItem('username',JSON.stringify(result.user.name));
+        localStorage.setItem('email',JSON.stringify(result.email));
         // Perform actions after successful login, e.g., set user in state, redirect, etc.
         navigate('/home');
       } else {

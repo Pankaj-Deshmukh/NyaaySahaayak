@@ -19,23 +19,6 @@ const userSchema = new mongoose.Schema({            //signup
     password: String,
 });
 
-// const LoginSchema = mongoose.Schema({                   //signup,login
-//   id:{
-//       type: String,
-//       required : true
-//   },
-//   name :{
-//       type : String,
-//       required : true
-//   },
-//   email :{
-//       type : String,
-//       required : true
-      
-//   }
-
-// });
-
 const mongoscheema = new mongoose.Schema({                       //google
   name:{
       type:String,
@@ -49,7 +32,7 @@ const searchHistorySchema = new mongoose.Schema({
     timestamp: { type: Date, default: Date.now }
 });
 
-const user = mongoose.model('facebook_datas', {
+const user = mongoose.model('facebook_datas', {              //facebook
   facebookId: String,
   displayName: String,
 });

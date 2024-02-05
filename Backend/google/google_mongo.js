@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect("mongodb+srv://NHKusers:nhkusers@nhkusers.okqyjty.mongodb.net/NHK_users")
+mongoose.connect("mongodb://localhost:27017")
 .then(()=>{
     console.log("connected to db");
 })
@@ -14,7 +14,7 @@ const mongoscheema = new mongoose.Schema({
         type:String
     }
 },{
-    collection:'Google_data'
+    collection:'test'
 })
 const model =  mongoose.model("Google_data",mongoscheema)
 module.exports=model
