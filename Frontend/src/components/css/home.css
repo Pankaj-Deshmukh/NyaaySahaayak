@@ -103,7 +103,11 @@ h1,h3{
 }
 .content-box{
     width: 70%;
+<<<<<<< HEAD
+    height: max-content;
+=======
     height:max-content;
+>>>>>>> 5f68b64677b26d12061f1096e76765a336afdfb2
     background-color: #c9d6ff;
     background: linear-gradient(to right, #dae2fd, #d1dcff);
 }
