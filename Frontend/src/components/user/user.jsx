@@ -1,5 +1,7 @@
-import {React, useState, props } from 'react';
+import React,{useState, props, useRef } from 'react';
 import Style from './user.module.css'
+import { useNavigate } from 'react-router-dom';
+
 
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineDarkMode } from "react-icons/md";
@@ -7,7 +9,17 @@ import { PiSignOutDuotone } from "react-icons/pi";
 
 
 
-function user({changeMode, mode}) {
+function user({changeMode, mode, onClose, username, email}) {
+
+  const navigate = useNavigate();
+  //   function for logging out.(Should call this function when the logoutButton is clicked in AccountDetails)
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    navigate('/');
+    console.log('User logged out');
+  };
 
   return (
     <div className={Style.userblock} style={{ backgroundColor: mode ? "#BFDBF7" : "" }}>

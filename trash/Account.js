@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 function Account({ onClose, username, email }) {
+    
     const navigate = useNavigate();
     const accountref = useRef();
     const closeAccount = (e) => {
