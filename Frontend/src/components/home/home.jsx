@@ -57,7 +57,7 @@ function Home() {
             <div className={Style.querybox}>
               <DialogueBox />
               <DialogueBox />
-              {searchTerm};
+               {searchTerm}  ;
               <DialogueBox />
               <DialogueBox />
               <DialogueBox />
