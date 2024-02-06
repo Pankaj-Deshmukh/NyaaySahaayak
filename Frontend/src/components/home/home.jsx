@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState, useRef } from 'react'
 import Style from './home.module.css'
-import SearchBar from '../searchBar/searchBar.jsx'
+import {SearchBar,searchTerm} from '../searchBar/searchBar.jsx'
+// import searchTerm from '../searchBar/searchBar.jsx'
 import DialogueBox from '../dialogueBox/dialogueBox.jsx'
 import User from '../user/user.jsx'
 import SearchHistory from '../searchHistory/searchHistory.jsx'
@@ -13,11 +14,14 @@ import { FaUserLarge} from "react-icons/fa6";
 
 
 
-function Home({searchTerm}) {
+function Home() {
   const [mode,setMode] = useState(false);
   const changeMode = () => {
    setMode(e => !e);
   }
+
+  
+  console.log("SEARCH TERM:"+searchTerm);
 
   const [popup, setPopup] = useState(false);
   const showUser = () => {
@@ -53,6 +57,7 @@ function Home({searchTerm}) {
             <div className={Style.querybox}>
               <DialogueBox />
               <DialogueBox />
+              {searchTerm};
               <DialogueBox />
               <DialogueBox />
               <DialogueBox />
