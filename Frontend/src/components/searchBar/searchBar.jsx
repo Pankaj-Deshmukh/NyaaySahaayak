@@ -3,15 +3,20 @@ import { MdOutlineFileUpload } from "react-icons/md";
 import './searchBar.css';
 // import { useAnswer } from '../../hooks/searchBody';
 
+let searchTerm = '';
+
 function SearchBar() {
   const textAreaRef = useRef(null);
   const [val, setVal] = useState('');
+  const [searchTerm, setSearchTerm] = useState('')
+
+
   const handleChange = (e) => {
     setVal(e.target.value);
     setSearchTerm(e.target.value);
 }
 
-const [searchTerm, setSearchTerm] = useState('');
+// const [searchTerm, setSearchTerm] = useState('');
   const [searchHistory, setSearchHistory] = useState([]);
   const [highestKeywordDescription, setHighestKeywordDescription] = useState('');
   const [showAccount, setAccount] = useState(false);
@@ -71,4 +76,4 @@ useEffect(() => {
   );
 }
 
-export default SearchBar;
+export { SearchBar, searchTerm};
