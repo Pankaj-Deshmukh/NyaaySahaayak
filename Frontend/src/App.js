@@ -1,4 +1,4 @@
-import LoginPage from './components/LoginPage/LoginPage.js';
+import LoginPage from './components/LoginPage/LoginPage.jsx';
 import Home from './components/home/home.jsx';
 import { BrowserRouter as Path, Route, Routes } from 'react-router-dom'
 
