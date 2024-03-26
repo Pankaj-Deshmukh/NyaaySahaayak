@@ -77,4 +77,4 @@ function SearchBar() {
   );
 }
 
-export { SearchBar, searchTerm };
+export default SearchBar;
