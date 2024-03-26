@@ -8,7 +8,7 @@
     margin: auto;
     min-height: 30px;
     max-height: 200px;
-    padding: 5px;
+    padding: 15px;
     border: 1px solid #ccc;
     border-radius: 10px;
     font-size: 16px;
@@ -28,7 +28,6 @@
 
 .searchbox textarea::placeholder {
     font-family: ubuntu;
-    padding: 5px;
     font-size: 18px;
     font-weight: 400;
 }

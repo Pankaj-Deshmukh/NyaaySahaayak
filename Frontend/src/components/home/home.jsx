@@ -1,7 +1,11 @@
 import React from 'react'
 import { useState, useRef } from 'react'
 import Style from './home.module.css'
+<<<<<<< HEAD
 import SearchBar from '../searchBar/searchBar.jsx'
+=======
+import { SearchBar, searchTerm } from '../searchBar/searchBar.jsx'
+>>>>>>> b25c13203cfecd71cc1ddea1d9977c6a420ec6c5
 // import searchTerm from '../searchBar/searchBar.jsx'
 import DialogueBox from '../dialogueBox/dialogueBox.jsx'
 import User from '../user/user.jsx'
@@ -10,25 +14,36 @@ import TypingHeading from './typingEffect.jsx'
 
 // react icons ...
 import { MdOutlineDoubleArrow } from "react-icons/md";
-import { FaUserLarge} from "react-icons/fa6";
+import { FaUserLarge } from "react-icons/fa6";
 
 
 
 function Home() {
+<<<<<<< HEAD
   const [searchTerm,setSearchTerm] = useState("");
 
   const [mode,setMode] = useState(false);
+=======
+  const [mode, setMode] = useState(false);
+>>>>>>> b25c13203cfecd71cc1ddea1d9977c6a420ec6c5
   const changeMode = () => {
-   setMode(e => !e);
+    setMode(e => !e);
   }
+  // for storing user details in local storage.
+  const [userDetails1, setUserDetails] = useState({
+    username: localStorage.getItem('username'),
+    email: localStorage.getItem('email')
+  })
 
-  
-  console.log("SEARCH TERM:"+searchTerm);
+  console.log("SEARCH TERM:" + searchTerm);
 
   const [popup, setPopup] = useState(false);
   const showUser = () => {
     setPopup(e => !e);
   }
+  // const [show_history,setShow_history] = useState(false);
+  // onClick={setShow_history(e => !e)}
+  // , width:show_history ? 0 : "280px"
 
   const popupRef = useRef();
   const closePopup = (e) => {
@@ -45,27 +60,37 @@ function Home() {
 
   return (
     <div className={Style.main}>
+<<<<<<< HEAD
       {popup && <div className={Style.popbg} onClick={closePopup} ref={popupRef}></div>}
       <div className={Style.history} style={{backgroundColor: mode ? "#022B3A" : "" }}>
         <h1 title='your history goes here' style={{color:mode ? "#E1E5F2" : ""}}>HISTORY</h1>
         <SearchHistory searchTerm = {searchTerm}/>
         <SearchHistory searchTerm = {searchTerm}/>
+=======
+      {/* popup user box .... */}
+      {popup && <div className={Style.popbg} onClick={closePopup} ref={popupRef}>
+        <div className={Style.popup}>
+          <User changeMode={changeMode} mode={mode} username={userDetails1.username} email={userDetails1.email} />
+        </div>
+      </div>}
+      <div className={Style.history} style={{ backgroundColor: mode ? "#022B3A" : "" }}>
+        <h1 title='your history goes here' style={{ color: mode ? "#E1E5F2" : "" }}>HISTORY</h1>
+        <SearchHistory />
+        <SearchHistory />
+>>>>>>> b25c13203cfecd71cc1ddea1d9977c6a420ec6c5
       </div>
-      <div className={Style.body} style={{backgroundColor:mode ? "#011D27" : ""}}>
-        <div className={Style.arrow}><MdOutlineDoubleArrow /></div>
+      <div className={Style.body} style={{ backgroundColor: mode ? "#011D27" : "" }}>
+        <div className={Style.arrow} ><MdOutlineDoubleArrow /></div>
         <div className={Style.header}>
           <div className={Style.img} onClick={showUser}><FaUserLarge /></div>
-          <TypingHeading mode={mode}/>
+          <TypingHeading mode={mode} />
         </div>
         <div className={Style.middle}>
-          {popup && <div className={Style.popup}>
-            <User changeMode={changeMode} mode={mode}/>
-          </div>}
           <div className={Style.queryboxbg}>
             <div className={Style.querybox}>
               <DialogueBox />
               <DialogueBox />
-               {searchTerm}  ;
+              {searchTerm}
               <DialogueBox />
               <DialogueBox />
               <DialogueBox />

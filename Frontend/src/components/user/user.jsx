@@ -1,5 +1,7 @@
-import {React, useState, props } from 'react';
+import React,{useState, props, useRef } from 'react';
 import Style from './user.module.css'
+import { useNavigate } from 'react-router-dom';
+
 
 import { AiOutlineUser } from "react-icons/ai";
 import { MdOutlineDarkMode } from "react-icons/md";
@@ -7,7 +9,17 @@ import { PiSignOutDuotone } from "react-icons/pi";
 
 
 
-function user({changeMode, mode}) {
+function User({changeMode, mode, username, email}) {
+
+  const navigate = useNavigate();
+  //   function for logging out.(Should call this function when the logoutButton is clicked in AccountDetails)
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    localStorage.removeItem('username');
+    localStorage.removeItem('email');
+    navigate('/');
+    console.log('User logged out');
+  };
 
   return (
     <div className={Style.userblock} style={{ backgroundColor: mode ? "#BFDBF7" : "" }}>
@@ -17,21 +29,21 @@ function user({changeMode, mode}) {
           <div className={Style.box} style={{backgroundColor:mode ? "#BFDBF7" : ""}}></div>
           <div className={Style.info2}>
             <ul>
-              <strong>DESHMUKH pankaj</strong>
-              <p>KMEC</p>
+              <p title={username}><strong>{username.split('"').join('')}</strong></p>
+              <p title={email}>{email.split('"').join('')}</p>
             </ul>
           </div>
         </div>
         <div style={{ fontSize: "20px" }} className={Style.step1}>
           <AiOutlineUser onClick={changeMode}/>
-          <p>Profile</p>
+          <p title="profile isn't ready at !">Profile</p>
         </div>
         <div style={{ fontSize: "20px" }} className={Style.step2} onClick={changeMode}>
           <MdOutlineDarkMode />
           <p>Switch Mode</p>
         </div>
       </div>
-      <div style={{ fontSize:'20px'}} className={Style.step3}>
+      <div style={{ fontSize:'20px'}} onClick={handleLogout} className={Style.step3}>
         <PiSignOutDuotone />
         <p>Sign out</p>
       </div>
@@ -39,4 +51,4 @@ function user({changeMode, mode}) {
   )
 }
 
-export default user
+export default User
