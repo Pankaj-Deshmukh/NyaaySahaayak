@@ -8,7 +8,7 @@ const changeloc4k = () => {
 };
 
 const FB = () => {
-  window.location.href = "http://localhost:3003/auth/facebook";
+  window.location.href = "http://localhost:3003/auth/facebook";  //Redirecting to Facebook authentication
 };
 
 export default function LoginPage() {

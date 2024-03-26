@@ -4,7 +4,6 @@ import { BrowserRouter as Path, Route, Routes } from 'react-router-dom'
 
 function App() {
    return (
-      <>
          <Path>
             <Routes>
 
@@ -13,7 +12,6 @@ function App() {
                
             </Routes>
          </Path>
-      </>
    );
 }
 

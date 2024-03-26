@@ -57,7 +57,7 @@ app.post('/search', async (req, res) => {
     console.log('maxCount:', maxCount);
     console.log('Keyword counts:', keywordCounts);
 
-    const descriptionToSend = documentsWithMaxKeywords.length > 0 ? documentsWithMaxKeywords[0].description : null;
+    const descriptionToSend = documentsWithMaxKeywords.length > 0 ? documentsWithMaxKeywords[1].description : null;
 
     res.status(200).json({
       description_with_highest_keywords: descriptionToSend

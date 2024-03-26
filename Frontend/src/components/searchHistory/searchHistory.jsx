@@ -1,14 +1,12 @@
-import React from 'react'
-import Style from './searchHistory.module.css'
+import React from 'react';
+import Style from './searchHistory.module.css';
 
-function searchHistory() {
+function SearchHistory(props) {
   return (
     <div className={Style.outer}>
-      <p>
-        hdsfheuhbkffhhuehjhhkfahuuuhjhuyeurhfhahfkjhadfhajhjfjkdhflhfskhdjshkfjdhuhejhfhafoahbafhhpankja fdjfdfhfhjkhfklh
-      </p> 
+      <p>{props.searchTerm}</p> 
     </div>
-  )
+  );
 }
 
-export default searchHistory
+export default SearchHistory;

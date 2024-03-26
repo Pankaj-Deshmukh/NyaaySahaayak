@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useRef } from 'react'
 import Style from './home.module.css'
-import {SearchBar,searchTerm} from '../searchBar/searchBar.jsx'
+import SearchBar from '../searchBar/searchBar.jsx'
 // import searchTerm from '../searchBar/searchBar.jsx'
 import DialogueBox from '../dialogueBox/dialogueBox.jsx'
 import User from '../user/user.jsx'
@@ -15,6 +15,8 @@ import { FaUserLarge} from "react-icons/fa6";
 
 
 function Home() {
+  const [searchTerm,setSearchTerm] = useState("");
+
   const [mode,setMode] = useState(false);
   const changeMode = () => {
    setMode(e => !e);
@@ -35,13 +37,19 @@ function Home() {
     }
   }
 
+
+  const handleSearchTermChange = (term) => {
+    console.log("Search is: "+term)
+    setSearchTerm(term);
+  }
+
   return (
     <div className={Style.main}>
       {popup && <div className={Style.popbg} onClick={closePopup} ref={popupRef}></div>}
       <div className={Style.history} style={{backgroundColor: mode ? "#022B3A" : "" }}>
         <h1 title='your history goes here' style={{color:mode ? "#E1E5F2" : ""}}>HISTORY</h1>
-        <SearchHistory />
-        <SearchHistory />
+        <SearchHistory searchTerm = {searchTerm}/>
+        <SearchHistory searchTerm = {searchTerm}/>
       </div>
       <div className={Style.body} style={{backgroundColor:mode ? "#011D27" : ""}}>
         <div className={Style.arrow}><MdOutlineDoubleArrow /></div>
@@ -65,7 +73,7 @@ function Home() {
           </div>
         </div>
         <div className={Style.footer}>
-          <SearchBar />
+          <SearchBar onSearchTermChange={handleSearchTermChange}/>
         </div>
       </div>
     </div>
