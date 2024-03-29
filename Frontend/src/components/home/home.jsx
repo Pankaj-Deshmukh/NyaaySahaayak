@@ -52,7 +52,11 @@ function Home() {
 
   return (
     <div className={Style.main}>
-      {popup && <div className={Style.popbg} onClick={closePopup} ref={popupRef}></div>}
+      {popup && <div className={Style.popbg} onClick={closePopup} ref={popupRef}>
+        <div className={Style.popup}>
+          <User changeMode={changeMode} mode={mode} username={userDetails1.username} email={userDetails1.email} />
+        </div>
+      </div>}
       <div className={Style.history} style={{backgroundColor: mode ? "#022B3A" : "" }}>
         <h1 title='your history goes here' style={{color:mode ? "#E1E5F2" : ""}}>HISTORY</h1>
         <SearchHistory searchTerm = {searchTerm}/>
