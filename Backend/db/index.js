@@ -18,7 +18,6 @@ const userSchema = new mongoose.Schema({            //signup
     email: String,
     password: String,
 });
-
 const mongoscheema = new mongoose.Schema({                       //google
   name:{
       type:String,

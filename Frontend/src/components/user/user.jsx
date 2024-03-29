@@ -20,6 +20,10 @@ function User({changeMode, mode, username, email}) {
     navigate('/');
     console.log('User logged out');
   };
+  const changePassword = () => {
+    console.log("change pass called")
+    navigate('/pschange')
+  }
 
   return (
     <div className={Style.userblock} style={{ backgroundColor: mode ? "#BFDBF7" : "" }}>
@@ -35,8 +39,10 @@ function User({changeMode, mode, username, email}) {
           </div>
         </div>
         <div style={{ fontSize: "20px" }} className={Style.step1}>
-          <AiOutlineUser onClick={changeMode}/>
+          <AiOutlineUser onClick={changePassword}/>
+          <div onClick={changePassword}>
           <p title="profile isn't ready at !">Profile</p>
+          </div>
         </div>
         <div style={{ fontSize: "20px" }} className={Style.step2} onClick={changeMode}>
           <MdOutlineDarkMode />

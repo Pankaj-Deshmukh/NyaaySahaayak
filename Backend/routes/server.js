@@ -1,5 +1,5 @@
 const {Router} = require('express');
-const {User,SearchHistory} = require('../db/index');
+const {User,SearchHistory, user} = require('../db/index');
 const userMiddleware = require('../middlewares/normalLogin');
 const JWT_SECRET = require("../passwords");
 const router = Router();
@@ -79,5 +79,27 @@ router.post('/search', async (req, res) => {
   res.json({ history });
   
 });
+
+// Endpoint for handeling password change.
+router.post("/pschange", async (req, res) => {
+  try {
+    const { username, password, newPassword } = req.body;
+    console.log(req.body);
+    const user = await User.findOne({ username, password });
+
+    if (!user) {
+      return res.status(404).json({ error: "User not found or incorrect password" });
+    }
+
+    user.password = newPassword;
+    await user.save();
+
+    res.status(200).json({ message: "Password updated successfully" });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 
 module.exports = router;
