@@ -1,18 +1,20 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MdOutlineFileUpload } from "react-icons/md";
 import Style from './searchBar.module.css';
+import axios from 'axios';
 // import { useAnswer } from '../../hooks/searchBody';
 
 let searchTerm = '';
 
-function SearchBar() {
+function SearchBar({ sendDataToParent }) {
   const textAreaRef = useRef(null);
-  const [val, setVal] = useState('');
-  const [searchTerm, setSearchTerm] = useState('')
+  const [searchTerm, setSearchTerm] = useState('');
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
 
 
   const handleChange = (e) => {
-    setVal(e.target.value);
+    setQuery(e.target.value);
     setSearchTerm(e.target.value);
   }
 
@@ -25,7 +27,7 @@ function SearchBar() {
     email: localStorage.getItem('email')
   })
 
-  const handleSearch = () => {
+  const handleSearch1 = () => {
     console.log("Search Term: ", searchTerm);
 
     // Send the search term to the server
@@ -57,21 +59,33 @@ function SearchBar() {
   useEffect(() => {
     textAreaRef.current.style.height = 'auto';
     textAreaRef.current.style.height = textAreaRef.current.scrollHeight + "px";
-  }, [val])
+  }, [query])
+
+  const handleSearch = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3001/api/search?query=${query}`);
+      setResults(response.data);
+      sendDataToParent(results,query);
+    } catch (error) {
+      console.error(error);
+      console.log("can't get query");
+    }
+  };
 
   return (
     <div className={Style.searchbox}>
       <textarea
-        value={val}
         onChange={handleChange}
         placeholder="Type something..."
         ref={textAreaRef}
         rows={1}
         content={searchTerm}
+        type="text" value={query}
       />
       <div className={Style.upload}>
         <MdOutlineFileUpload onClick={handleSearch} />
       </div>
+     
       {/* <p>search text is overflowing . need the correction</p> */}
     </div>
   );

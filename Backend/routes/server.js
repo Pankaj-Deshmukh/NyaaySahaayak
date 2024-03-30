@@ -1,12 +1,14 @@
-const {Router} = require('express');
-const {User,SearchHistory, user} = require('../db/index');
+const express = require('express');
+const {User,SearchHistory, user,Component} = require('../db/index');
 const userMiddleware = require('../middlewares/normalLogin');
 const JWT_SECRET = require("../passwords");
-const router = Router();
-const cors = require('cors')
-const jwt = require('jsonwebtoken')
+const cors = require('cors');
+const jwt = require('jsonwebtoken');
+
+const router = express();
 
 router.use(cors());
+router.use(express.json());
 // Handle signup (POST request)
 router.post('/signup', async (req, res) => {
   try {
@@ -62,7 +64,22 @@ router.post("/logg", async (req, res) => {
     });
   }
 });
+// search route
+router.get('/api/search', async (req, res) => {
+  try {
+    const { query } = req.query;
+    console.log('Received search query:', query);
 
+    const regex = new RegExp(query, 'i');
+    const components = await Component.find({ name: regex }).limit(10);
+    console.log('Search results:', components);
+    
+    res.json(components);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Server Error' });
+  }
+});
 // Endpoint to handle search requests
 router.post('/search', async (req, res) => {
   console.log("Received search query: ",req.body)
@@ -83,9 +100,9 @@ router.post('/search', async (req, res) => {
 // Endpoint for handeling password change.
 router.post("/pschange", async (req, res) => {
   try {
-    const { username, password, newPassword } = req.body;
+    const { name, password, newPassword } = req.body;
     console.log(req.body);
-    const user = await User.findOne({ username, password });
+    const user = await User.findOne({ name, password });
 
     if (!user) {
       return res.status(404).json({ error: "User not found or incorrect password" });

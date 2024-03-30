@@ -41,7 +41,7 @@ function User({changeMode, mode, username, email}) {
         <div style={{ fontSize: "20px" }} className={Style.step1}>
           <AiOutlineUser onClick={changePassword}/>
           <div onClick={changePassword}>
-          <p title="profile isn't ready at !">Profile</p>
+          <p title="profile isn't ready at !">Change Password</p>
           </div>
         </div>
         <div style={{ fontSize: "20px" }} className={Style.step2} onClick={changeMode}>

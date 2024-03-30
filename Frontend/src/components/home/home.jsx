@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import Style from './home.module.css'
 import SearchBar from '../searchBar/searchBar.jsx'
 // import searchTerm from '../searchBar/searchBar.jsx'
@@ -48,7 +48,17 @@ function Home() {
   const handleSearchTermChange = (term) => {
     console.log("Search is: "+term)
     setSearchTerm(term);
-  }
+  };
+  const [query, setQuery] = useState('');
+  const [results, setResults] = useState([]);
+  const handleDataFromChild = (data1,data2) => {
+    setResults(prevResults => [...prevResults, ...data1]);
+    setQuery(data2);
+  };
+  useEffect(() => {
+    // Render components only when results state changes
+  }, [results]);
+
 
   return (
     <div className={Style.main}>
@@ -59,8 +69,11 @@ function Home() {
       </div>}
       <div className={Style.history} style={{backgroundColor: mode ? "#022B3A" : "" }}>
         <h1 title='your history goes here' style={{color:mode ? "#E1E5F2" : ""}}>HISTORY</h1>
-        <SearchHistory searchTerm = {searchTerm}/>
-        <SearchHistory searchTerm = {searchTerm}/>
+        {results.slice(0,10).map((component,index) => (
+                  <React.Fragment key={index}>
+                    <SearchHistory searchTerm={component.name} />
+                  </React.Fragment>
+                ))}
       </div>
       <div className={Style.body} style={{ backgroundColor: mode ? "#011D27" : "" }}>
         <div className={Style.arrow} ><MdOutlineDoubleArrow /></div>
@@ -71,17 +84,19 @@ function Home() {
         <div className={Style.middle}>
           <div className={Style.queryboxbg}>
             <div className={Style.querybox}>
-              <DialogueBox />
-              <DialogueBox />
-              {searchTerm}
-              <DialogueBox />
-              <DialogueBox />
-              <DialogueBox />
+                {results.map((component,index) => (
+                  <React.Fragment key={index}>
+                    <h4>{userDetails1.username.split('"').join('')}:</h4>
+                    <DialogueBox info={component.name} />
+                    <h4>NyaaySahayak:</h4>
+                    <DialogueBox info={component.description} />
+                  </React.Fragment>
+                ))}
             </div>
           </div>
         </div>
         <div className={Style.footer}>
-          <SearchBar onSearchTermChange={handleSearchTermChange}/>
+          <SearchBar sendDataToParent={handleDataFromChild} onSearchTermChange={handleSearchTermChange}/>
         </div>
       </div>
     </div>

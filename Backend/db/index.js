@@ -40,9 +40,16 @@ const User = mongoose.model('On-site_login', userSchema);
 // const Login = mongoose.model("Login_Data",LoginSchema)
 const SearchHistory = mongoose.model('SearchHistory', searchHistorySchema);
 
+const ComponentSchema = new mongoose.Schema({
+    name: String,
+    description: String,
+  });
+  const Component = mongoose.model('Component', ComponentSchema);
+
 module.exports = {
     UserModel,
     user,
     User,
+    Component,
     SearchHistory
 };
